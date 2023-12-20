@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { AppProps } from 'next/dist/shared/lib/router/router';
-import 'firebase/auth';
+import 'firebase/compat/auth';
 import AppHeader from '../components/AppHeader';
 import { initFirebase } from '../lib/firebase-client';
 import { AuthProvider } from '../lib/user/AuthContext';

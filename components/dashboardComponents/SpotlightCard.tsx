@@ -3,7 +3,7 @@ import CalendarIcon from '@material-ui/icons/CalendarToday';
 import PinDrop from '@material-ui/icons/PinDrop';
 import ClockIcon from '@material-ui/icons/AccessTime';
 import Backpack from '@material-ui/icons/LocalMall';
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
 
 /**
  * HackCenter Spotlight Card Component

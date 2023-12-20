@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import 'firebase/storage';
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
 
 /**
  * Keynote Speaker card for landing page.
  */
 export default function KeynoteSpeaker(props) {
-  const [imageLink, setImageLink] = useState();
+  const [imageLink, setImageLink] = useState<string | undefined>();
 
   useEffect(() => {
     if (props.imageLink !== undefined) {
