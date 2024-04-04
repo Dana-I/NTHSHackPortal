@@ -1,4 +1,7 @@
 @import url('/fonts/stylesheet.css');
+/* add Fredoka font from google font */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
