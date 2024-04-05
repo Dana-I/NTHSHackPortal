@@ -3,10 +3,17 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import React, { SVGProps } from 'react';
 
+//TODO: need to do some media queries for footer, styling is off
 export default function HomeFooter() {
   return (
-    <section style={{ minHeight: '387px' }} className=" mt-16 md:text-base text-xs relative">
-      <hr className=" bg-complementary" />
+    <section
+      style={{
+        minHeight: '387px',
+        // TODO: need to update box shadow, current box shadow is a bit off from the design
+        boxShadow: 'rgba(0, 0, 0, 0.18) 20px -2px 20px',
+      }}
+      className=" mt-16 md:text-base text-xs relative"
+    >
       <div className="flex">
         <Blob width={400} className="absolute hidden left-0 top-0 lg:block" />
         <div className="z-10 grid grid-cols-1 lg:gap-36 lg:grid-cols-3">
