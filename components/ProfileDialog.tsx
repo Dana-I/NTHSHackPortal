@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import NotesIcon from '@material-ui/icons/Notes';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import NotesIcon from '@mui/icons-material/Notes';
 import { useAuthContext } from '../lib/user/AuthContext';
 
 /**

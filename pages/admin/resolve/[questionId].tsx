@@ -8,7 +8,7 @@ import PendingQuestion from '../../../components/dashboardComponents/PendingQues
 import { RequestHelper } from '../../../lib/request-helper';
 import { useAuthContext } from '../../../lib/user/AuthContext';
 import { QADocument } from '../../api/questions';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 /**
  * Resolve question page.

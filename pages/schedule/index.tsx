@@ -16,87 +16,50 @@ import {
   Resources,
   GroupingPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { withStyles, Theme, createStyles } from '@material-ui/core';
-import { grey, indigo, blue, teal, purple, red, orange } from '@material-ui/core/colors';
-import Paper from '@material-ui/core/Paper';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
-import { WithStyles } from '@material-ui/styles';
-import classNames from 'clsx';
+import { grey, indigo, blue, teal, purple, red, orange } from '@mui/material/colors';
+import Paper from '@mui/material/Paper';
+import { alpha } from '@mui/material/styles';
+import clsx from 'clsx';
 import { GetServerSideProps } from 'next';
 import { RequestHelper } from '../../lib/request-helper';
-import CalendarIcon from '@material-ui/icons/CalendarToday';
-import PinDrop from '@material-ui/icons/PinDrop';
-import ClockIcon from '@material-ui/icons/AccessTime';
-import Backpack from '@material-ui/icons/LocalMall';
-import Description from '@material-ui/icons/BorderColor';
+import CalendarIcon from '@mui/icons-material/CalendarToday';
+import PinDrop from '@mui/icons-material/PinDrop';
+import ClockIcon from '@mui/icons-material/AccessTime';
+import Backpack from '@mui/icons-material/LocalMall';
+import Description from '@mui/icons-material/BorderColor';
 import firebase from 'firebase';
 
-const styles = ({ palette }: Theme) =>
-  createStyles({
-    appointment: {
-      borderRadius: 0,
-      borderBottom: 0,
-    },
+const textClass = 'overflow-hidden text-ellipsis whitespace-nowrap';
+const contentClass = 'opacity-[0.7]';
+const containerClass = 'w-full h-full leading-[1.2]';
 
-    EventTypeAppointment: {
-      border: `2px solid ${red[500]}`,
-      backgroundColor: `${grey[900]}`,
-      borderRadius: 8,
-      boxShadow: ` 0 0 16px 1px ${red[400]} `,
-    },
-    SponsorTypeAppointment: {
-      border: `2px solid ${orange[500]}`,
-      backgroundColor: `${grey[900]}`,
-      borderRadius: 8,
-      boxShadow: ` 0 0 16px 4px ${orange[500]} `,
-    },
-    TechTalkTypeAppointment: {
-      border: `2px solid ${indigo[500]}`,
-      backgroundColor: `${grey[900]}`,
-      borderRadius: 8,
-      boxShadow: ` 0 0 16px 4px ${indigo[500]} `,
-    },
-    WorkshopTypeAppointment: {
-      border: `2px solid ${purple[500]}`,
-      backgroundColor: `${grey[900]}`,
-      borderRadius: 8,
-      boxShadow: ` 0 0 16px 4px ${purple[500]} `,
-    },
-    SocialTypeAppointment: {
-      border: `2px solid ${blue[500]}`,
-      backgroundColor: `${grey[900]}`,
-      borderRadius: 8,
-      boxShadow: ` 0 0 16px 4px ${blue[500]} `,
-    },
-    weekEndCell: {
-      backgroundColor: alpha(palette.action.disabledBackground, 0.04),
-      '&:hover': {
-        backgroundColor: alpha(palette.action.disabledBackground, 0.04),
-      },
-      '&:focus': {
-        backgroundColor: alpha(palette.action.disabledBackground, 0.04),
-      },
-    },
-    weekEndDayScaleCell: {
-      backgroundColor: alpha(palette.action.disabledBackground, 0.06),
-    },
-    text: {
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-    },
-    content: {
-      opacity: 0.7,
-    },
-    container: {
-      width: '100%',
-      lineHeight: 1.2,
-      height: '100%',
-    },
-  });
+const appointmentBaseClass = 'rounded-none border-b-0 bg-[#212121] rounded-[8px]'; // grey[900]
+const eventTypeClass = 'border-[2px] border-[#f44336] border-solid shadow-[0_0_16px_1px_#ef5350]'; // border: red[500], boxShadow: red[400]
+const sponsorTypeClass = 'border-[2px] border-[#ff9800] border-solid shadow-[0_0_16px_1px_#ff9800]'; // border: orange[500], boxShadow: orange[500]
+const techTalkTypeClass =
+  'border-[2px] border-[#3f51b5] border-solid shadow-[0_0_16px_1px_#3f51b5]'; // border: indigo[500], boxShadow: indigo[500]
+const workshopTypeClass =
+  'border-[2px] border-[#9c27b0] border-solid shadow-[0_0_16px_1px_#9c27b0]'; // border: purple[500], boxShadow: purple[400]
+const socialTypeClass = 'border-[2px] border-[#2196f3] border-solid shadow-[0_0_16px_1px_#2196f3]'; // border: blue[500], boxShadow: blue[500]
 
-type AppointmentProps = Appointments.AppointmentProps & WithStyles<typeof styles>;
-type AppointmentContentProps = Appointments.AppointmentContentProps & WithStyles<typeof styles>;
+// const styles = ({ palette }: Theme) =>
+//   createStyles({
+//     weekEndCell: {
+//       backgroundColor: alpha(palette.action.disabledBackground, 0.04),
+//       '&:hover': {
+//         backgroundColor: alpha(palette.action.disabledBackground, 0.04),
+//       },
+//       '&:focus': {
+//         backgroundColor: alpha(palette.action.disabledBackground, 0.04),
+//       },
+//     },
+//     weekEndDayScaleCell: {
+//       backgroundColor: alpha(palette.action.disabledBackground, 0.06),
+//     },
+//   });
+
+type AppointmentProps = Appointments.AppointmentProps;
+type AppointmentContentProps = Appointments.AppointmentContentProps;
 
 const isWeekEnd = (date: Date): boolean => date.getDay() === 0 || date.getDay() === 6;
 const defaultCurrentDate = new Date(2021, 10, 13, 9, 0);
@@ -104,27 +67,23 @@ const defaultCurrentDate = new Date(2021, 10, 13, 9, 0);
   /* !!!change */
 }
 
-const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(
-  ({ classes, data, ...restProps }: AppointmentContentProps) => {
-    let Event = 'Event';
-    if (data.Event === 2) Event = 'Sponsor';
-    if (data.Event === 3) Event = 'Tech Talk';
-    if (data.Event === 4) Event = 'Workshop';
-    if (data.Event === 5) Event = 'Social';
+const AppointmentContent = ({ data, ...restProps }: AppointmentContentProps) => {
+  let Event = 'Event';
+  if (data.Event === 2) Event = 'Sponsor';
+  if (data.Event === 3) Event = 'Tech Talk';
+  if (data.Event === 4) Event = 'Workshop';
+  if (data.Event === 5) Event = 'Social';
 
-    return (
-      <Appointments.AppointmentContent {...restProps} data={data}>
-        <div className={classes.container}>
-          <div className={classes.text}>{data.title}</div>
-          <div className={classNames(classes.text, classes.content)}>{`Type: ${Event}`}</div>
-          <div className={classNames(classes.text, classes.content)}>
-            {`Location: ${data.location}`}
-          </div>
-        </div>
-      </Appointments.AppointmentContent>
-    );
-  },
-);
+  return (
+    <Appointments.AppointmentContent {...restProps} data={data}>
+      <div className={containerClass}>
+        <div className={textClass}>{data.title}</div>
+        <div className={clsx(textClass, contentClass)}>{`Type: ${Event}`}</div>
+        <div className={clsx(textClass, contentClass)}>{`Location: ${data.location}`}</div>
+      </div>
+    </Appointments.AppointmentContent>
+  );
+};
 
 export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
   // Hooks
@@ -141,22 +100,20 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
   const [eventDescription, setEventDescription] = useState(null);
 
   // Scheduler configuration
-  const Appointment = withStyles(styles)(
-    ({ onClick, classes, data, ...restProps }: AppointmentProps) => (
-      <Appointments.Appointment
-        {...restProps}
-        className={classNames({
-          [classes.EventTypeAppointment]: data.Event === 1,
-          [classes.SponsorTypeAppointment]: data.Event === 2,
-          [classes.TechTalkTypeAppointment]: data.Event === 3,
-          [classes.WorkshopTypeAppointment]: data.Event === 4,
-          [classes.SocialTypeAppointment]: data.Event === 5,
-          [classes.appointment]: true,
-        })}
-        data={data}
-        onClick={() => changeEventData(data)}
-      />
-    ),
+  const Appointment = ({ onClick, data, ...restProps }: AppointmentProps) => (
+    <Appointments.Appointment
+      {...restProps}
+      className={clsx({
+        [appointmentBaseClass]: true,
+        [eventTypeClass]: data.Event === 1,
+        [sponsorTypeClass]: data.Event === 2,
+        [techTalkTypeClass]: data.Event === 3,
+        [workshopTypeClass]: data.Event === 4,
+        [socialTypeClass]: data.Event === 5,
+      })}
+      data={data}
+      onClick={() => changeEventData(data)}
+    />
   );
 
   const changeEventData = (data: AppointmentModel) => {

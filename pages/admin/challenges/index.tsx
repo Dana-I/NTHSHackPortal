@@ -7,7 +7,7 @@ import { useAuthContext } from '../../../lib/user/AuthContext';
 import Link from 'next/link';
 import ChallengeList from '../../../components/adminComponents/challengeComponents/ChallengeList';
 import { arrayMove } from '@dnd-kit/sortable';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 interface ChallengePageProps {
   challenges_: Challenge[];

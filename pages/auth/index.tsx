@@ -4,8 +4,8 @@ import { useAuthContext } from '../../lib/user/AuthContext';
 import { useState } from 'react';
 import firebase from 'firebase/app';
 import Link from 'next/link';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import GoogleIcon from '../../public/icons/googleicon.png';
 import Image from 'next/image';
 /**

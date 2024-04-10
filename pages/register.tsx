@@ -11,8 +11,8 @@ import { hackPortalConfig, formInitialValues } from '../hackportal.config';
 import DisplayQuestion from '../components/registerComponents/DisplayQuestion';
 import { getFileExtension } from '../lib/util';
 import Link from 'next/link';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { GetServerSideProps } from 'next';
 
 interface RegisterPageProps {

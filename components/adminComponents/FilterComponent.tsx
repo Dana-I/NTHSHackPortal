@@ -1,6 +1,5 @@
-import Checkbox from '@material-ui/core/Checkbox';
-import { blue } from '@material-ui/core/colors';
-import { withStyles } from '@material-ui/core/styles';
+import Checkbox from '@mui/material/Checkbox';
+import { blue } from '@mui/material/colors';
 
 interface FilterComponentProps {
   title: string;
@@ -9,24 +8,21 @@ interface FilterComponentProps {
 }
 
 export default function FilterComponent({ title, checked, onCheck }: FilterComponentProps) {
-  const CustomCheckbox = withStyles({
-    root: {
-      color: blue[400],
-      '&$checked': {
-        color: blue[600],
-      },
-    },
-    checked: {},
-  })((props) => (
+  const CustomCheckbox = () => (
     <Checkbox
       checked={checked}
       onChange={() => {
         onCheck();
       }}
       color="default"
-      {...props}
+      sx={{
+        color: blue[400],
+        ':checked': {
+          color: blue[600],
+        },
+      }}
     />
-  ));
+  );
 
   return (
     <div className="flex items-center text-sm md:text-base">

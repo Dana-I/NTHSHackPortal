@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import Indigo from '@material-ui/core/colors/indigo';
+import { indigo as Indigo } from '@mui/material/colors';
 
 type DropdownMenuProps = {
   /** Name of the menu, will append " Menu" to the end when displaying */

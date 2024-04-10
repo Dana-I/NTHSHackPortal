@@ -3,7 +3,7 @@ import ChallengeForm from '../../../components/adminComponents/challengeComponen
 import { RequestHelper } from '../../../lib/request-helper';
 import { useAuthContext } from '../../../lib/user/AuthContext';
 import Link from 'next/link';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 function isAuthorized(user): boolean {
   if (!user || !user.permissions) return false;

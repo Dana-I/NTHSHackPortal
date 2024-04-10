@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import ProfileDialog from './ProfileDialog';
 import { useUser } from '../lib/profile/user-data';
 import { useAuthContext } from '../lib/user/AuthContext';
