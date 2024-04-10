@@ -116,7 +116,7 @@ export default function AuthPage() {
     <>
       <section className="bg-secondary min-h-screen">
         <div className="p-4">
-          <Link href="/" passHref>
+          <Link href="/" passHref legacyBehavior>
             <div className="cursor-pointer items-center inline-flex text-primaryDark font-medium">
               <ChevronLeftIcon />
               return to event site
@@ -203,12 +203,12 @@ export default function AuthPage() {
                     {/* !change if needed */}
                     {/* Uncomment to allow resend verification email option (users could spam) */}
                     {/* {sendVerification && (
-                    <div className='flex justify-center'>
-                      <button className="underline" onClick={() => sendVerificationEmail()}>
-                        Resend verification
-                      </button>
-                    </div>
-                  )} */}
+                  <div className='flex justify-center'>
+                    <button className="underline" onClick={() => sendVerificationEmail()}>
+                      Resend verification
+                    </button>
+                  </div>
+                )} */}
                     <button
                       className="mt-6 px-4 py-2 w-full rounded-full border border-complementary/20 text-complementary bg-white my-4 text-base font-bold text-center flex items-center justify-center"
                       onClick={() => signInWithGoogle()}

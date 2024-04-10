@@ -43,10 +43,14 @@ export default function UserAdminView({
       currentUser.resume === '' ? (
         'No resume found'
       ) : (
-        <Link passHref href={currentUser.resume} className="border-2 p-3 hover:bg-gray-200">
-          <a target="_blank" rel="noopener noreferrer">
-            Click here to download resume
-          </a>
+        <Link
+          passHref
+          href={currentUser.resume}
+          className="border-2 p-3 hover:bg-gray-200"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Click here to download resume
         </Link>
       ),
     ],

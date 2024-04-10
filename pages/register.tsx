@@ -190,7 +190,7 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="pt-4 pl-4">
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <div className="cursor-pointer items-center inline-flex text-primaryDark font-semibold sm:text-lg">
             <ChevronLeftIcon />
             return to event site

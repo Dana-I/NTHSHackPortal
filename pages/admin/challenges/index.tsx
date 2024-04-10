@@ -126,7 +126,7 @@ export default function ChallengePage({ challenges_ }: ChallengePageProps) {
       ) : (
         <>
           <div className="mt-4">
-            <Link href="/admin" passHref>
+            <Link href="/admin" passHref legacyBehavior>
               <div className="cursor-pointer items-center inline-flex text-primaryDark font-bold md:text-lg text-base">
                 <ChevronLeftIcon />
                 return to event dashboard
@@ -147,7 +147,7 @@ export default function ChallengePage({ challenges_ }: ChallengePageProps) {
             }}
           />
           <div className="p-3 flex gap-x-4">
-            <Link href={`/admin/challenges/add?id=${nextChallengeIndex}`}>
+            <Link href={`/admin/challenges/add?id=${nextChallengeIndex}`} legacyBehavior>
               <button className="font-bold bg-green-200 hover:bg-green-300 border border-green-800 text-green-900 rounded-lg p-3">
                 Add New Challenge
               </button>

@@ -109,7 +109,7 @@ export default function EventPage({ events_ }: EventPageProps) {
       ) : (
         <>
           <div className="mt-4">
-            <Link href="/admin" passHref>
+            <Link href="/admin" passHref legacyBehavior>
               <div className="cursor-pointer items-center inline-flex text-primaryDark font-bold md:text-lg text-base">
                 <ChevronLeftIcon />
                 return to event dashboard
@@ -127,7 +127,7 @@ export default function EventPage({ events_ }: EventPageProps) {
             events={events}
           />
           <div className="p-3">
-            <Link href={`/admin/events/add?id=${nextEventIndex}`}>
+            <Link href={`/admin/events/add?id=${nextEventIndex}`} legacyBehavior>
               <button className="font-bold bg-green-200 hover:bg-green-300 border border-green-800 text-green-900 rounded-lg md:p-3 p-1 px-2">
                 Add New Event
               </button>

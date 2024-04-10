@@ -13,7 +13,7 @@ import { useFCMContext } from '../../lib/service-worker/FCMContext';
 import SpotlightCard from '../../components/dashboardComponents/SpotlightCard';
 import ChallengeCard from '../../components/dashboardComponents/ChallengeCard';
 
-import { Navigation, Pagination, A11y } from 'swiper';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';

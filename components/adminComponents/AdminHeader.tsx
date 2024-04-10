@@ -81,23 +81,23 @@ export default function AdminHeader() {
         <div className="panel w-full bg-secondaryDark text-primaryDark text-sm">
           <ul className="">
             <li className="p-2 hover:bg-secondary cursor-pointer">
-              <Link href="/admin" passHref>
+              <Link href="/admin" passHref legacyBehavior>
                 <div>Event Dashboard</div>
               </Link>
             </li>
             <li className="p-2 hover:bg-secondary cursor-pointer">
-              <Link href="/admin/scan" passHref>
+              <Link href="/admin/scan" passHref legacyBehavior>
                 <div>Scanner</div>
               </Link>
             </li>
             <li className="p-2 hover:bg-[#DCDEFF]">
-              <Link href="/admin/users" passHref>
+              <Link href="/admin/users" passHref legacyBehavior>
                 <div>User Dashboard</div>
               </Link>
             </li>
             {isAuthorized(user) && (
               <li className="p-2 hover:bg-secondary cursor-pointer">
-                <Link href="/admin/stats" passHref>
+                <Link href="/admin/stats" passHref legacyBehavior>
                   <div>Stats at a Glance</div>
                 </Link>
               </li>
