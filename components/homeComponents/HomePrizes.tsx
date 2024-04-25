@@ -5,7 +5,7 @@ export default function HomePrizes() {
     <section className="w-full">
       {/* Banner */}
       <div
-        className="my-6 -rotate-[4deg] bg-[#7B81FF] text-white p-3 w-lvw"
+        className="-mx-4 my-6 -rotate-[4deg] bg-[#7B81FF] text-white p-3 w-lvw"
         style={{
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
