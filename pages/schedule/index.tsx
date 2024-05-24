@@ -37,7 +37,6 @@ const styles = ({ palette }: Theme) =>
       borderRadius: 0,
       borderBottom: 0,
     },
-
     EventTypeAppointment: {
       border: `2px solid ${red[500]}`,
       backgroundColor: `${grey[900]}`,
@@ -100,6 +99,8 @@ type AppointmentContentProps = Appointments.AppointmentContentProps & WithStyles
 
 const isWeekEnd = (date: Date): boolean => date.getDay() === 0 || date.getDay() === 6;
 const defaultCurrentDate = new Date(2021, 10, 13, 9, 0);
+const defaultStartDate = new Date(2024, 4, 25, 9, 0);
+const defaultEndDate = new Date(2024, 4, 26, 9, 0);
 {
   /* !!!change */
 }
@@ -139,6 +140,7 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
     track: '',
   });
   const [eventDescription, setEventDescription] = useState(null);
+  const [filter, setFilter] = useState('All');
 
   // Scheduler configuration
   const Appointment = withStyles(styles)(
@@ -158,6 +160,14 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
       />
     ),
   );
+
+  const changeFilter = (newFilter: string) => {
+    if (newFilter === filter) {
+      setFilter('All');
+    } else {
+      setFilter(newFilter);
+    }
+  };
 
   const changeEventData = (data: AppointmentModel) => {
     const startDate = new Date(data.startDate);
@@ -246,33 +256,108 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
 
   return (
     <>
-      <div className="text-6xl font-black p-6">Schedule</div>
+      <div className="text-center text-4xl text-primaryDark font-black p-6">What to Expect?</div>
+      <div className="flex justify-center items-center">
+        <div className="border-2 border-blue-900 rounded-full px-8 my-4">
+          <div className="text-center py-1 text-lg text-primaryDark font-bold">Filters</div>
+          <div className="flex justify-center mb-2">
+            <div
+              onClick={() => changeFilter('Event')}
+              className={`text-sm cursor-pointer	mx-1 px-2 h-8 py-1 border-2 rounded-full ${
+                filter === 'Event' ? 'bg-teal-500 text-white' : 'border-teal-500 text-teal-500'
+              }`}
+            >
+              {' '}
+              Required{' '}
+            </div>
+            <div
+              onClick={() => changeFilter('Sponser')}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
+                filter === 'Sponser'
+                  ? 'bg-orange-500 text-white'
+                  : 'border-orange-500 text-orange-500'
+              }`}
+            >
+              {' '}
+              Sponser{' '}
+            </div>
+            <div
+              onClick={() => changeFilter('Tech Talk')}
+              className={`text-sm cursor-pointer	mx-1 px-2 h-8 py-1 border-2 rounded-full ${
+                filter === 'Tech Talk' ? 'bg-red-500 text-white' : 'border-red-500 text-red-500'
+              }`}
+            >
+              {' '}
+              Tech Talk{' '}
+            </div>
+            <div
+              onClick={() => changeFilter('Workshop')}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
+                filter === 'Workshop' ? 'bg-blue-500 text-white' : 'border-blue-500 text-blue-500'
+              }`}
+            >
+              {' '}
+              Workshop{' '}
+            </div>
+            <div
+              onClick={() => changeFilter('Social')}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
+                filter === 'Social'
+                  ? 'bg-indigo-500 text-white'
+                  : 'border-indigo-500 text-indigo-500'
+              }`}
+            >
+              {' '}
+              Social{' '}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="flex flex-wrap lg:justify-between px-6 h-[75vh]">
         {/* Calendar */}
-        <div className="overflow-y-auto overflow-x-hidden lg:w-[62%] w-full h-full border-2 border-black rounded-md">
-          <Paper>
-            <div className="flex flex-row">
+        <div className="flex">
+          <div className="p-1 overflow-y-auto overflow-x-hidden mx-auto lg:w-[80%] w-full h-full rounded-md">
+            <div className="text-2xl font-black p-6 text-primaryDark">Day 1: Saturday</div>
+            <Paper className="p-3">
               <Scheduler data={props.scheduleCard}>
-                <ViewState defaultCurrentDate={defaultCurrentDate} />
-                <DayView startDayHour={8} endDayHour={24} intervalCount={1} />
+                <ViewState defaultCurrentDate={defaultStartDate} />
+                <DayView startDayHour={8} endDayHour={24} cellDuration={60} />
                 <Appointments
                   appointmentComponent={Appointment}
                   appointmentContentComponent={AppointmentContent}
                 />
                 <Resources data={resources} mainResourceName={'track'} />
-                <Toolbar />
-                <DateNavigator />
-                <TodayButton />
                 <GroupingState grouping={grouping} groupByDate={() => true} />
                 {/* since tracks are computed from entries, only show grouping if there are any tracks */}
                 {uniqueTracks.size > 0 ? <IntegratedGrouping /> : null}
                 {uniqueTracks.size > 0 ? <GroupingPanel /> : null}
               </Scheduler>
-            </div>
-          </Paper>
+            </Paper>
+          </div>
+
+          <div className="p-1 overflow-y-auto overflow-x-hidden mx-auto lg:w-[80%] w-full h-full rounded-md">
+            <div className="text-2xl font-black p-6 text-primaryDark">Day 2: Sunday</div>
+            <Paper className="p-3">
+              <Scheduler data={props.scheduleCard}>
+                <ViewState defaultCurrentDate={defaultEndDate} />
+                <DayView startDayHour={8} endDayHour={24} cellDuration={60} />
+                <Appointments
+                  appointmentComponent={Appointment}
+                  appointmentContentComponent={AppointmentContent}
+                />
+                <Resources data={resources} mainResourceName={'track'} />
+                <GroupingState grouping={grouping} groupByDate={() => true} />
+                {/* since tracks are computed from entries, only show grouping if there are any tracks */}
+                {uniqueTracks.size > 0 ? <IntegratedGrouping /> : null}
+                {uniqueTracks.size > 0 ? <GroupingPanel /> : null}
+              </Scheduler>
+            </Paper>
+          </div>
         </div>
 
         {/* Event info card */}
+        {/*
         <div className="overflow-y-auto flex flex-col justify-between lg:w-[36%] w-full h-full lg:my-0 my-2 border-2 border-black rounded-md bg-white p-4">
           <section>
             {eventData.title === '' ? (
@@ -283,7 +368,7 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
             <h1 className="md:text-4xl text-2xl font-bold">{eventData.title}</h1>
             <div className="md:text-lg text-sm mb-4">{eventData.speakers}</div>
 
-            {/* Shows card info if user has clicked on an event */}
+            // Shows card info if user has clicked on an event
             <div className={eventData.title === '' ? 'hidden' : 'inline'}>
               <div className="grid grid-cols-2 gap-y-2 md:my-8 my-6 md:text-lg text-sm">
                 <div className="">
@@ -328,6 +413,7 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
 
           <div className="text-right">*All events are given in CST</div>
         </div>
+        */}
       </div>
     </>
   );
