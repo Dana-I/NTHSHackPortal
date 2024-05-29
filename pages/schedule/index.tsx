@@ -29,6 +29,7 @@ import PinDrop from '@material-ui/icons/PinDrop';
 import ClockIcon from '@material-ui/icons/AccessTime';
 import Backpack from '@material-ui/icons/LocalMall';
 import Description from '@material-ui/icons/BorderColor';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import firebase from 'firebase';
 
 const styles = ({ palette }: Theme) =>
@@ -36,6 +37,9 @@ const styles = ({ palette }: Theme) =>
     appointment: {
       borderRadius: 0,
       borderBottom: 0,
+    },
+    filtered: {
+      opacity: 0.3,
     },
     EventTypeAppointment: {
       border: `2px solid ${red[500]}`,
@@ -108,18 +112,29 @@ const defaultEndDate = new Date(2024, 4, 26, 9, 0);
 const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(
   ({ classes, data, ...restProps }: AppointmentContentProps) => {
     let Event = 'Event';
-    if (data.Event === 2) Event = 'Sponsor';
-    if (data.Event === 3) Event = 'Tech Talk';
-    if (data.Event === 4) Event = 'Workshop';
-    if (data.Event === 5) Event = 'Social';
+    if (data.type === 'Required') Event = 'Required';
+    if (data.type === 'Sponsor') Event = 'Sponsor';
+    if (data.type === 'Tech Talk') Event = 'Tech Talk';
+    if (data.type === 'Workshop') Event = 'Workshop';
+    if (data.type === 'Social') Event = 'Social';
+
+    const startDate = new Date(data.startDate);
+
+    const formattedTime = startDate.toLocaleString([], { hour: 'numeric', minute: 'numeric' });
 
     return (
       <Appointments.AppointmentContent {...restProps} data={data}>
         <div className={classes.container}>
-          <div className={classes.text}>{data.title}</div>
-          <div className={classNames(classes.text, classes.content)}>{`Type: ${Event}`}</div>
-          <div className={classNames(classes.text, classes.content)}>
-            {`Location: ${data.location}`}
+          <div className="flex justify-between">
+            <div className={classes.text}>{formattedTime}</div>
+            <div className={classes.text}>{data.title}</div>
+          </div>
+          <div className="flex justify-between">
+            <div className={classNames(classes.text, classes.content)}>{`${data.type}`}</div>
+            <div className={classNames(classes.text, classes.content)}>
+              <LocationOnIcon style={{ fontSize: 'medium', margin: '2px' }} />
+              {`${data.location}`}
+            </div>
           </div>
         </div>
       </Appointments.AppointmentContent>
@@ -148,11 +163,12 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
       <Appointments.Appointment
         {...restProps}
         className={classNames({
-          [classes.EventTypeAppointment]: data.Event === 1,
-          [classes.SponsorTypeAppointment]: data.Event === 2,
-          [classes.TechTalkTypeAppointment]: data.Event === 3,
-          [classes.WorkshopTypeAppointment]: data.Event === 4,
-          [classes.SocialTypeAppointment]: data.Event === 5,
+          [classes.EventTypeAppointment]: data.Event === 'Required',
+          [classes.SponsorTypeAppointment]: data.Event === 'Sponsor',
+          [classes.TechTalkTypeAppointment]: data.Event === 'Tech Talk',
+          [classes.WorkshopTypeAppointment]: data.Event === 'Workshop',
+          [classes.SocialTypeAppointment]: data.Event === 'Social',
+          [classes.filtered]: filter !== 'All' && data.type !== filter,
           [classes.appointment]: true,
         })}
         data={data}
@@ -226,7 +242,7 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
   ];
 
   const trackColor = (track: string) => {
-    if (track === 'General') return teal;
+    if (track === 'Required') return teal;
     if (track === 'Technical') return red;
     if (track === 'Social') return indigo;
     if (track === 'Sponsor') return orange;
@@ -262,9 +278,9 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
           <div className="text-center py-1 text-lg text-primaryDark font-bold">Filters</div>
           <div className="flex justify-center mb-2">
             <div
-              onClick={() => changeFilter('Event')}
-              className={`text-sm cursor-pointer	mx-1 px-2 h-8 py-1 border-2 rounded-full ${
-                filter === 'Event' ? 'bg-teal-500 text-white' : 'border-teal-500 text-teal-500'
+              onClick={() => changeFilter('Required')}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
+                filter === 'Required' ? 'bg-teal-500 text-white' : 'border-teal-500 text-teal-500'
               }`}
             >
               {' '}
@@ -329,9 +345,6 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
                 />
                 <Resources data={resources} mainResourceName={'track'} />
                 <GroupingState grouping={grouping} groupByDate={() => true} />
-                {/* since tracks are computed from entries, only show grouping if there are any tracks */}
-                {uniqueTracks.size > 0 ? <IntegratedGrouping /> : null}
-                {uniqueTracks.size > 0 ? <GroupingPanel /> : null}
               </Scheduler>
             </Paper>
           </div>
@@ -348,9 +361,6 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
                 />
                 <Resources data={resources} mainResourceName={'track'} />
                 <GroupingState grouping={grouping} groupByDate={() => true} />
-                {/* since tracks are computed from entries, only show grouping if there are any tracks */}
-                {uniqueTracks.size > 0 ? <IntegratedGrouping /> : null}
-                {uniqueTracks.size > 0 ? <GroupingPanel /> : null}
               </Scheduler>
             </Paper>
           </div>
