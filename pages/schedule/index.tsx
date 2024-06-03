@@ -278,53 +278,51 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
           <div className="text-center py-1 text-lg text-primaryDark font-bold">Filters</div>
           <div className="flex justify-center mb-2">
             <div
-              onClick={() => changeFilter('Required')}
-              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
-                filter === 'Required' ? 'bg-teal-500 text-white' : 'border-teal-500 text-teal-500'
-              }`}
+              onClick={() => changeFilter('All')}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full border-gray-500 
+              ${filter === 'All' ? 'bg-gray-500 text-white' : 'text-gray-500'}`}
             >
-              {' '}
-              Required{' '}
+              All
             </div>
+
+            <div
+              onClick={() => changeFilter('Required')}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full border-teal-500
+              ${filter === 'Required' ? 'bg-teal-500 text-white' : 'text-teal-500'}`}
+            >
+              Required
+            </div>
+
             <div
               onClick={() => changeFilter('Sponser')}
-              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
-                filter === 'Sponser'
-                  ? 'bg-orange-500 text-white'
-                  : 'border-orange-500 text-orange-500'
-              }`}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full border-orange-500 
+              ${filter === 'Sponser' ? 'bg-orange-500 text-white' : 'text-orange-500'}`}
             >
-              {' '}
-              Sponser{' '}
+              Sponser
             </div>
+
             <div
               onClick={() => changeFilter('Tech Talk')}
-              className={`text-sm cursor-pointer	mx-1 px-2 h-8 py-1 border-2 rounded-full ${
-                filter === 'Tech Talk' ? 'bg-red-500 text-white' : 'border-red-500 text-red-500'
-              }`}
+              className={`text-sm cursor-pointer	mx-1 px-2 h-8 py-1 border-2 rounded-full border-red-500 
+              ${filter === 'Tech Talk' ? 'bg-red-500 text-white' : 'text-red-500'}`}
             >
-              {' '}
-              Tech Talk{' '}
+              Tech Talk
             </div>
+
             <div
               onClick={() => changeFilter('Workshop')}
-              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
-                filter === 'Workshop' ? 'bg-blue-500 text-white' : 'border-blue-500 text-blue-500'
-              }`}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full border-blue-500 
+              ${filter === 'Workshop' ? 'bg-blue-500 text-white' : 'text-blue-500'}`}
             >
-              {' '}
-              Workshop{' '}
+              Workshop
             </div>
+
             <div
               onClick={() => changeFilter('Social')}
-              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full ${
-                filter === 'Social'
-                  ? 'bg-indigo-500 text-white'
-                  : 'border-indigo-500 text-indigo-500'
-              }`}
+              className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-full border-indigo-500 
+              ${filter === 'Social' ? 'bg-indigo-500 text-white' : 'text-indigo-500'}`}
             >
-              {' '}
-              Social{' '}
+              Social
             </div>
           </div>
         </div>
