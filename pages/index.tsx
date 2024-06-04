@@ -11,6 +11,7 @@ import HomeChallenges from '../components/homeComponents/HomeChallenges';
 import HomeTeam from '../components/homeComponents/HomeTeam';
 import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
+import Calendar from './schedule';
 
 /**
  * The home page.
@@ -24,6 +25,7 @@ export default function Home(props: {
   answeredQuestion: AnsweredQuestion[];
   fetchedMembers: TeamMember[];
   sponsorCard: Sponsor[];
+  scheduleCard: ScheduleEvent[];
 }) {
   const [loading, setLoading] = useState(true);
 
@@ -52,6 +54,7 @@ export default function Home(props: {
       <HomeHero />
       <HomeVideoStats />
       <HomeAbout />
+      <Calendar scheduleCard={props.scheduleCard} />
       <HomeSpeakers keynoteSpeakers={props.keynoteSpeakers} />
       <HomeChallenges challenges={props.challenges} />
       <HomeTeam members={props.fetchedMembers} />
@@ -83,6 +86,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `${protocol}://${context.req.headers.host}/api/sponsor`,
     {},
   );
+  const { data: scheduleData } = await RequestHelper.get<ScheduleEvent[]>(
+    `${protocol}://${context.req.headers.host}/api/schedule`,
+    {},
+  );
   return {
     props: {
       keynoteSpeakers: keynoteData,
@@ -90,6 +97,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       answeredQuestion: answeredQuestion,
       fetchedMembers: memberData,
       sponsorCard: sponsorData,
+      scheduleCard: scheduleData,
     },
   };
 };
