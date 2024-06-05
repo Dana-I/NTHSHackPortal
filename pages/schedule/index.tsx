@@ -17,13 +17,13 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
     Required: 'border-[#FC012E] text-[#FC012E]',
     'Tech Talk': 'border-[#56E100] text-[#56E100]',
     Social: 'border-[#FFB900] text-[#FFB900]',
-    Sponser: 'border-[#008CF1] text-[#008CF1]',
+    Sponsor: 'border-[#008CF1] text-[#008CF1]',
     Workshop: 'border-[#5200FF] text-[#5200FF]',
     'All-Filter': 'border-gray-500 bg-gray-500 text-white',
     'Required-Filter': 'border-[#FC012E] bg-[#FC012E] text-white',
     'Tech Talk-Filter': 'border-[#56E100] bg-[#56E100] text-white',
     'Social-Filter': 'border-[#FFB900] bg-[#FFB900] text-white',
-    'Sponser-Filter': 'border-[#008CF1] bg-[#008CF1] text-white',
+    'Sponsor-Filter': 'border-[#008CF1] bg-[#008CF1] text-white',
     'Workshop-Filter': 'border-[#5200FF] bg-[#5200FF] text-white',
   };
 
@@ -136,11 +136,11 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
             </div>
 
             <div
-              onClick={() => changeFilter('Sponser')}
+              onClick={() => changeFilter('Sponsor')}
               className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-xl
-              ${filter === 'Sponser' ? eventColors['Sponser-Filter'] : eventColors['Sponser']}`}
+              ${filter === 'Sponsor' ? eventColors['Sponsor-Filter'] : eventColors['Sponsor']}`}
             >
-              Sponser
+              Sponsor
             </div>
 
             <div

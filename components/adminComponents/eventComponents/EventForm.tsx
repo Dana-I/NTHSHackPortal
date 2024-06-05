@@ -40,7 +40,7 @@ export default function EventForm({ event, onSubmitClick, formAction }: EventFor
           Choose an event type
         </option>
         <option value="Required">Required Event</option>
-        <option value="Sponser">Sponsor Event</option>
+        <option value="Sponsor">Sponsor Event</option>
         <option value="Tech Talk">Tech Talk Event</option>
         <option value="Workshop">Workshop Event</option>
         <option value="Social">Social Event</option>
