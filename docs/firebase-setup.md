@@ -44,6 +44,17 @@ Team Members
         - fileName [string]
         - rank [number]
 
+Dates
+- dates
+    - [document]
+        - endTime [number]
+        - startTime [number]
+        - year [number]
+        - day1 [number]
+        - day2 [number]
+        - day1Month [number]
+        - day2Month [number]
+
 Event Schedule
 - schedule-events
     - [document]

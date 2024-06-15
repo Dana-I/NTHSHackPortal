@@ -240,6 +240,16 @@ type ScheduleEvent = {
   description: string;
 };
 
+type Dates = {
+  endTime: number;
+  startTime: number;
+  year: number;
+  day1: number;
+  day2: number;
+  day1Month: number;
+  day2Month: number;
+};
+
 type Sponsor = {
   link: string;
   reference: string;

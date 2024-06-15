@@ -4,13 +4,8 @@ import { GetServerSideProps } from 'next';
 import { RequestHelper } from '../../lib/request-helper';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-/* Set event dates and times */
-const day1StartDateAndTime = new Date(2024, 4, 25, 9, 0);
-const day2StartDateAndTime = new Date(2024, 4, 26, 9, 0);
-const eventEndDateAndTime = new Date(2024, 4, 27, 9, 0);
-
 /* Calendar */
-export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
+export default function Calendar(props: { scheduleCard: ScheduleEvent[]; dateCard: Dates }) {
   /* Event Colors */
   const eventColors = {
     All: 'border-gray-500 text-gray-500',
@@ -26,6 +21,40 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
     'Sponsor-Filter': 'border-[#008CF1] bg-[#008CF1] text-white',
     'Workshop-Filter': 'border-[#5200FF] bg-[#5200FF] text-white',
   };
+
+  /* Dates Values */
+  const dateValues = {
+    year: props.dateCard[0].year,
+    day1: props.dateCard[0].day1,
+    day1Month: props.dateCard[0].day1Month,
+    day2: props.dateCard[0].day2,
+    day2Month: props.dateCard[0].day2Month,
+    endTime: props.dateCard[0].endTime,
+    startTime: props.dateCard[0].startTime,
+  };
+
+  /* Set event dates and times */
+  const day1StartDateAndTime = new Date(
+    dateValues['year'],
+    dateValues['day1Month'],
+    dateValues['day1'],
+    dateValues['startTime'],
+    0,
+  );
+  const day2StartDateAndTime = new Date(
+    dateValues['year'],
+    dateValues['day2Month'],
+    dateValues['day2'],
+    dateValues['startTime'],
+    0,
+  );
+  const eventEndDateAndTime = new Date(
+    dateValues['year'],
+    dateValues['day1Month'],
+    dateValues['day2'] + 1,
+    dateValues['endTime'],
+    0,
+  );
 
   /* Filter Functionality */
   const [filter, setFilter] = useState('All');
@@ -70,18 +99,18 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
                           `}
           >
             <div className="flex justify-between pb-1">
-              <div className="text-md font-bold">{formattedTime}</div>
-              <div className="text-md font-bold">{data.title}</div>
+              <div className="text-md font-bold font-dmsans">{formattedTime}</div>
+              <div className="text-md font-bold font-dmsans">{data.title}</div>
             </div>
             <div className="flex justify-between">
               <div
-                className={`bg-white text-xs rounded-xl py-1 px-2 border-2 ${
+                className={`bg-white text-xs rounded-xl py-1 px-2 border-2 font-dmsans ${
                   eventColors[data.type]
                 }`}
               >
                 {data.type}
               </div>
-              <div className="text-gray-600 flex items-center">
+              <div className="text-gray-600 flex items-center font-dmsans">
                 <LocationOnIcon style={{ fontSize: 'large', marginRight: '2px' }} />
                 {data.location}
               </div>
@@ -112,13 +141,17 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
 
   return (
     <div className="bg-[#F2F3FF]">
-      <div className="text-center text-4xl font-bold text-[#05149C] p-4">What to Expect?</div>
+      <div className="text-center text-5xl font-bold text-[#05149C] p-4 font-fredoka">
+        What to Expect?
+      </div>
 
       {/* Filter */}
       <div className="md:flex justify-center items-center mx-8">
-        <div className="bg-white border-2 border-blue-900 rounded-2xl px-8 my-4 border-opacity-40">
-          <div className="text-center py-1 text-xl font-bold text-[#05149C]">Filters</div>
-          <div className="flex flex-wrap justify-center mb-2">
+        <div className="bg-white border-2 border-blue-900 rounded-3xl px-8 my-4 border-opacity-40">
+          <div className="text-center py-1 text-xl font-bold text-[#05149C] font-poppins">
+            Filters
+          </div>
+          <div className="flex flex-wrap justify-center mb-2 font-poppins">
             <div
               onClick={() => changeFilter('All')}
               className={`text-sm cursor-pointer mx-1 px-2 h-8 py-1 border-2 rounded-xl border-gray-500 mb-1
@@ -173,14 +206,16 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
       {/* Calendar */}
       <div className="md:flex p-1 overflow-y-auto overflow-x-hidden mx-auto lg:w-[80%] w-full h-full">
         <div className="w-full lg:w-1/2 px-4 md:px-0">
-          <div className="text-2xl font-black py-6 text-[#05149C]">Day 1: Saturday</div>
+          <div className="text-2xl font-black py-6 text-[#05149C] font-fredoka">
+            Day 1: Saturday
+          </div>
           <div className="bg-white mb-8 mx-2 p-2 border-2 rounded-2xl border-[#05149C] border-opacity-20">
             {day1Events}
           </div>
         </div>
 
         <div className="w-full lg:w-1/2 md:ml-6 px-4 md:px-0">
-          <div className="text-2xl font-black py-6 text-[#05149C]">Day 2: Sunday</div>
+          <div className="text-2xl font-black py-6 text-[#05149C] font-fredoka">Day 2: Sunday</div>
           <div className="bg-white mb-8 mx-2 p-2 border-2 rounded-2xl border-[#05149C] border-opacity-20">
             {day2Events}
           </div>
@@ -196,9 +231,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `${protocol}://${context.req.headers.host}/api/schedule`,
     {},
   );
+  const { data: dateData } = await RequestHelper.get<ScheduleEvent[]>(
+    `${protocol}://${context.req.headers.host}/api/dates`,
+    {},
+  );
   return {
     props: {
       scheduleCard: scheduleData,
+      dataCard: dateData,
     },
   };
 };
