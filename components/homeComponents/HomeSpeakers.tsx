@@ -15,8 +15,11 @@ export default function HomeSpeakers(props: { keynoteSpeakers: KeynoteSpeaker[] 
   return (
     speakers.length != 0 && (
       <section className=" overflow-x-auto min-h-[24rem]">
-        <div className="flex items-start justify-start font-bold md:p-12 p-6 md:text-4xl text-2xl my-4 text-complementary">
+        <div className="text-center text-4xl md:text-5xl font-bold text-[#05149C] pt-8 pb-2 font-fredoka">
           Speakers
+        </div>
+        <div className="text-center text-sm md:text-md pb-8 font-dmsans">
+          The members that make HackPortal possible
         </div>
 
         <Swiper
