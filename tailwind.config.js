@@ -11,6 +11,7 @@ module.exports = {
         secondaryDark: '#BABFFF',
         complementary: '#4C4950', //gray
         complementaryDark: '#252427',
+        complementaryLight: '#999999',
       },
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
