@@ -15,13 +15,13 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
   const eventColors = {
     All: 'border-gray-500 text-gray-500',
     Required: 'border-[#FC012E] text-[#FC012E]',
-    'Tech Talk': 'border-[#56E100] text-[#56E100]',
+    Food: 'border-[#56E100] text-[#56E100]',
     Social: 'border-[#FFB900] text-[#FFB900]',
     Sponsor: 'border-[#008CF1] text-[#008CF1]',
     Workshop: 'border-[#5200FF] text-[#5200FF]',
     'All-Filter': 'border-gray-500 bg-gray-500 text-white',
     'Required-Filter': 'border-[#FC012E] bg-[#FC012E] text-white',
-    'Tech Talk-Filter': 'border-[#56E100] bg-[#56E100] text-white',
+    'Food-Filter': 'border-[#56E100] bg-[#56E100] text-white',
     'Social-Filter': 'border-[#FFB900] bg-[#FFB900] text-white',
     'Sponsor-Filter': 'border-[#008CF1] bg-[#008CF1] text-white',
     'Workshop-Filter': 'border-[#5200FF] bg-[#5200FF] text-white',
@@ -116,7 +116,7 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
 
       {/* Filter */}
       <div className="md:flex justify-center items-center mx-8">
-        <div className="bg-white border-2 border-blue-900 rounded-2xl px-8 my-4">
+        <div className="bg-white border-2 border-blue-900 rounded-2xl px-8 my-4 border-opacity-40">
           <div className="text-center py-1 text-xl font-bold text-[#05149C]">Filters</div>
           <div className="flex flex-wrap justify-center mb-2">
             <div
@@ -144,13 +144,11 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
             </div>
 
             <div
-              onClick={() => changeFilter('Tech Talk')}
+              onClick={() => changeFilter('Food')}
               className={`text-sm cursor-pointer	mx-1 px-2 h-8 py-1 border-2 rounded-xl
-              ${
-                filter === 'Tech Talk' ? eventColors['Tech Talk-Filter'] : eventColors['Tech Talk']
-              }`}
+              ${filter === 'Food' ? eventColors['Food-Filter'] : eventColors['Food']}`}
             >
-              Tech Talk
+              Food
             </div>
 
             <div
@@ -176,14 +174,14 @@ export default function Calendar(props: { scheduleCard: ScheduleEvent[] }) {
       <div className="md:flex p-1 overflow-y-auto overflow-x-hidden mx-auto lg:w-[80%] w-full h-full">
         <div className="w-full lg:w-1/2 px-4 md:px-0">
           <div className="text-2xl font-black py-6 text-[#05149C]">Day 1: Saturday</div>
-          <div className="bg-white mb-8 mx-2 p-2 border-2 rounded-2xl border-gray-300">
+          <div className="bg-white mb-8 mx-2 p-2 border-2 rounded-2xl border-[#05149C] border-opacity-20">
             {day1Events}
           </div>
         </div>
 
         <div className="w-full lg:w-1/2 md:ml-6 px-4 md:px-0">
           <div className="text-2xl font-black py-6 text-[#05149C]">Day 2: Sunday</div>
-          <div className="bg-white mb-8 mx-2 p-2 border-2 rounded-2xl border-gray-300">
+          <div className="bg-white mb-8 mx-2 p-2 border-2 rounded-2xl border-[#05149C] border-opacity-20">
             {day2Events}
           </div>
         </div>
