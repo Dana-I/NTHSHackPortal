@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/messaging';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/messaging';
 
 export default function HomeNotif() {
   const [notif, setNotif] = useState(true);

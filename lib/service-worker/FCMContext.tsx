@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/messaging';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/messaging';
 import { RequestHelper } from '../request-helper';
 import { firebaseConfig } from '../firebase-client';
-import 'firebase/messaging';
 
 interface FCMContextState {
   fcmSw: ServiceWorkerRegistration;

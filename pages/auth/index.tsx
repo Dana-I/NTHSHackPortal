@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../../lib/user/AuthContext';
 import { useState } from 'react';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import Link from 'next/link';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';

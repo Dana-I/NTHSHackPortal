@@ -27,7 +27,7 @@ import PinDrop from '@mui/icons-material/PinDrop';
 import ClockIcon from '@mui/icons-material/AccessTime';
 import Backpack from '@mui/icons-material/LocalMall';
 import Description from '@mui/icons-material/BorderColor';
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
 
 const textClass = 'overflow-hidden text-ellipsis whitespace-nowrap';
 const contentClass = 'opacity-[0.7]';
