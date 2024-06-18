@@ -22,7 +22,6 @@ export default function HomeSpeakers(props: { keynoteSpeakers: KeynoteSpeaker[] 
         <Swiper
           navigation={true}
           modules={[Navigation]}
-          className="mySwiper"
           slidesPerView={1}
           spaceBetween={10}
           // Responsive breakpoints
