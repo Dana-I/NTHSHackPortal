@@ -1,6 +1,13 @@
 import HomePrizesCard from './HomePrizesCard';
 
-export default function HomePrizes() {
+interface HomePrizesProps {
+  prizes: Array<{
+    rank: number;
+    prizeName: string;
+  }>;
+}
+
+export default function HomePrizes({ prizes }: HomePrizesProps) {
   return (
     <section className="w-full">
       {/* Banner */}
@@ -20,12 +27,7 @@ export default function HomePrizes() {
         <h1 className="mt-[100px] text-3xl text-center font-bold text-[#05149C]">Prizes</h1>
         <p className="text-center">Potential prize that participants can win!</p>
         <div className="md:grid md:grid-cols-3 flex flex-col gap-x-6 gap-y-[140px] mt-6">
-          {/* TODO: Remove hardcoded value */}
-          {[
-            { rank: 0, prizeName: 'Test Prize' },
-            { rank: 1, prizeName: 'Test Second Prize' },
-            { rank: 2, prizeName: 'Test Third Prize' },
-          ].map((prize, idx) => (
+          {prizes.map((prize, idx) => (
             <HomePrizesCard key={idx} prize={prize} blockType={idx % 3} />
           ))}
         </div>
