@@ -37,45 +37,7 @@ export default function BackgroundCircles() {
       },
       detectRetina: true,
 
-      //   interactivity: {
-      //     events: {
-      //       onClick: {
-      //         enable: false,
-      //         mode: 'push',
-      //       },
-      //       onHover: {
-      //         enable: false,
-      //         mode: 'repulse',
-      //       },
-      //     },
-      //     modes: {
-      //       push: {
-      //         quantity: 4,
-      //       },
-      //       repulse: {
-      //         distance: 200,
-      //         duration: 0.4,
-      //       },
-      //     },
-      //   },
-
-      //   background: {
-      //     color: {
-      //       value: '#0d47a1',
-      //     },
-      //   },
-
       particles: {
-        // color: {
-        //   value: '#ffffff',
-        // },
-        // links: {
-        //   color: '#ffffff',
-        //   distance: 150,
-        //   enable: true,
-        //   opacity: 0.5,
-        //   width: 1,
-        // },
         move: {
           direction: 'none',
           enable: true,
@@ -87,9 +49,6 @@ export default function BackgroundCircles() {
           straight: false,
         },
         number: {
-          //   density: {
-          //     enable: true,
-          //   },
           value: 1,
         },
         opacity: {
@@ -99,13 +58,7 @@ export default function BackgroundCircles() {
           type: 'image',
           options: {
             image: {
-              // any path or url to your image that will be used as a particle
               src: '/assets/circles.svg',
-              // the pixel width of the image, you can use any value, the image will be scaled
-              //   width: 600,
-              // the pixel height of the image, you can use any value, the image will be scaled
-              //   height: 600,
-              // if true and the image type is SVG, it will replace all the colors with the particle color
               replaceColor: false,
             },
           },
