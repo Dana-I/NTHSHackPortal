@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Container, ISourceOptions } from '@tsparticles/engine';
+import {
+  Container,
+  IOptionLoader,
+  ISourceOptions,
+  Options,
+  RotateDirection,
+} from '@tsparticles/engine';
 import Particles from './Particles';
 import { useParticles } from './Particles/ParticlesProvider';
 
@@ -38,14 +44,23 @@ export default function BackgroundCircles() {
       detectRetina: true,
 
       particles: {
+        // https://github.com/tsparticles/tsparticles/blob/main/markdown/Options/Particles/Rotate.md
+        rotate: {
+          direction: RotateDirection.random,
+          value: { min: 90, max: 270 },
+          animation: {
+            enable: true,
+            speed: 2,
+          },
+        },
         move: {
           direction: 'none',
           enable: true,
+          speed: 6,
           outModes: {
             default: 'bounce',
           },
           random: false,
-          speed: 6,
           straight: false,
         },
         number: {

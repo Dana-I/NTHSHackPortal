@@ -1,4 +1,32 @@
 @font-face {
+    font-family: "Fredoka One";
+    src: url("FredokaOne-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Nunito";
+    src: url("Nunito-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DM Sans";
+    src: url("DMSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DM Sans";
+    src: url("DMSans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'Wavehaus 158';
     src: local('Wavehaus 158 ExtraBold'), local('Wavehaus-158ExtraBold'),
         url('Wavehaus-158ExtraBold.woff2') format('woff2'),
