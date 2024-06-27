@@ -112,7 +112,7 @@ const HomeAbout = () => {
       fontFamily: 'Arial, sans-serif',
       textAlign: 'center',
       width: '100vw',
-      height: '170vh',
+      height: '150vh',
       overflow: 'hidden',
       paddingTop: '2vh',
     },
