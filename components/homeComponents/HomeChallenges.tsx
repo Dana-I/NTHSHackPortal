@@ -11,7 +11,7 @@ export default function HomeChallengesComponent(props: { challenges: Challenge[]
       <section className="md:py-12 py-6 xl:w-9/10 w-11/12 m-auto">
         <div className="flex items-center">
           <div className="flex-1 mr-6 border-t-4 border-black"></div>
-          <span className="font-bold md:text-4xl text-2xl text-center text-[#05149C]">
+          <span className="font-[Fredoka] font-bold md:text-4xl text-2xl text-center text-[#05149C]">
             Challenge Tracks
           </span>
           <div className="flex-1 ml-6 border-t-4 border-black"></div>
