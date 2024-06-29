@@ -75,7 +75,7 @@ export default function AppHeader2_Wrapper() {
 
   return (
     <header
-      className={'flex flex-col w-full relative'}
+      className={'hidden md:flex flex-col w-full relative'}
       style={{ height, marginBottom: -(height - TOP_OFFSET) }}
     >
       {/* App header core */}

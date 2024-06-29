@@ -9,7 +9,7 @@ export default function HomeHero() {
   const router = useRouter();
 
   return (
-    <section className="min-h-screen bg-contain bg-white flex flex-col">
+    <section className="min-h-screen bg-contain bg-white flex flex-col-reverse md:flex-col">
       {/* App header */}
       <AppHeader2_Wrapper />
 
@@ -33,9 +33,9 @@ export default function HomeHero() {
           </div>
 
           {/* Big welcome */}
-          <div className="w-full flex flex-col gap-1 justify-center items-center bg-[rgba(242,243,255,0.75)] backdrop-blur-[70px]">
-            <p className="text-2xl md:text-4xl">Welcome To</p>
-            <h1 className="text-4xl md:text-6xl lg:text-9xl font-bold text-[#05149C]">
+          <div className="w-full flex flex-col gap-2 justify-center items-center bg-[rgba(255,255,255,0.75)] backdrop-blur-[60px]">
+            <p className="font-nunito text-[#262626] text-xl md:text-3xl">Welcome To</p>
+            <h1 className="font-fredokaOne text-4xl md:text-6xl lg:text-8xl font-bold text-[#05149C]">
               HACKPORTAL
             </h1>
           </div>
@@ -43,7 +43,7 @@ export default function HomeHero() {
       </div>
 
       {/* Bottom banner */}
-      <div className="w-full flex justify-center bg-[#7B81FF] text-white h-[1.75rem] text-nowrap">
+      <div className="font-dmSans w-full flex justify-center bg-[#7B81FF] text-white h-[1.75rem] text-nowrap">
         <p className="text-lg">
           SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE
           TEXT • SAMPLE TEXT • SAMPLE TEXT
