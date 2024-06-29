@@ -29,7 +29,7 @@ function Question(props) {
               input: 'focus:ring-offset-0 focus:ring-0 focus:ring-shadow-0',
             },
           }}
-          className="!mb-8"
+          className="!mt-4"
         />
         <ErrorMessage
           name={props.question.name}
@@ -62,7 +62,7 @@ function Question(props) {
               input: 'focus:ring-offset-0 focus:ring-0 focus:ring-shadow-0',
             },
           }}
-          className="!mb-8"
+          className="!mt-4"
         />
         <ErrorMessage
           name={props.question.name}
@@ -79,7 +79,7 @@ function Question(props) {
           required={props.question.required}
           label={props.question.question}
           name={props.question.name}
-          className="!mb-8"
+          className="!mt-4"
         >
           <MenuItem selected disabled value="" />
           {props.question.options.map((option) => (
@@ -88,7 +88,6 @@ function Question(props) {
             </MenuItem>
           ))}
         </TextField>
-
         <ErrorMessage
           name={props.question.name}
           render={(msg) => <div className="text-red-600">{msg}</div>}

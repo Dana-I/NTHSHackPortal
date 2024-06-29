@@ -61,9 +61,9 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
   }, []);
 
   // disbale this for testing
-  // useEffect(() => {
-  //   checkRedirect();
-  // }, [user]);
+  useEffect(() => {
+    checkRedirect();
+  }, [user]);
 
   const handleSubmit = async (registrationData) => {
     let resumeUrl: string = '';
@@ -129,9 +129,9 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
   }
 
   // disable this for testing
-  // if (!user) {
-  //   router.push('/');
-  // }
+  if (!user) {
+    router.push('/');
+  }
 
   if (loading) {
     return <LoadIcon width={200} height={200} />;
@@ -193,10 +193,12 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
         <meta name="description" content="Register for [HACKATHON NAME]" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="pt-4 pl-4">
+      <section className="pl-4 relative mb-4">
         {/* TODO: update */}
         <Link href="/" passHref>
-          <ChevronLeftIcon className="text-primaryDark text-6xl absolute" />
+          <a className="absolute top-4 z-10">
+            <ChevronLeftIcon fontSize={'large'} color={'primary'} />
+          </a>
         </Link>
       </section>
 
@@ -341,21 +343,36 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
                 <section className="bg-white lg:w-3/5 md:w-3/4 w-full min-h-[35rem] mx-auto rounded-2xl md:py-10 py-6 px-8 mb-8 text-[#4C4950]">
                   <h2 className="sm:text-2xl text-xl font-semibold sm:mb-3 mb-1">Event Info</h2>
                   <div className="flex flex-col">
-                    {eventInfoQuestions.map((obj, idx) => (
-                      <DisplayQuestion
-                        key={idx}
-                        obj={obj}
-                        values={values}
-                        onChange={handleChange}
-                      />
-                    ))}
+                    {/* apply styling issue fix, it's an ugly fix but this solve the styling issue */}
+                    {eventInfoQuestions.map((obj, idx) => {
+                      if (idx !== 0)
+                        return (
+                          <DisplayQuestion
+                            key={idx}
+                            obj={obj}
+                            values={values}
+                            onChange={handleChange}
+                          />
+                        );
+
+                      return (
+                        <div style={{ height: '56px' }} className="mb-8" key={idx}>
+                          <DisplayQuestion
+                            key={idx}
+                            obj={obj}
+                            values={values}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                 </section>
               )}
 
               {/* Sponsor Questions */}
               {registrationSection == 4 && (
-                <section className="bg-white lg:w-3/5 md:w-3/4 w-full min-h-[35rem] mx-auto rounded-2xl md:py-10 py-6 px-8 mb-8 text-[#4C4950]">
+                <section className="bg-white lg:w-3/5 md:w-3/4 w-full min-h-[35rem] mx-auto rounded-2xl md:py-10 py-6 px-8 mb-8 text-[#4C4950] relative">
                   <h2 className="sm:text-2xl text-xl font-semibold sm:mb-3 mb-1">Sponsor Info</h2>
                   <div className="flex flex-col">
                     {sponsorInfoQuestions.map((obj, idx) => (
@@ -385,7 +402,7 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
                     </p>
                   </div>
                   {/* Submit */}
-                  <div className="mt-8 text-white">
+                  <div className="text-white absolute right-4">
                     <button
                       type="submit"
                       className="mr-auto cursor-pointer px-4 py-2 rounded-lg bg-primaryDark hover:brightness-90"
@@ -415,42 +432,48 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
               : registrationSection >= 4
               ? 'justify-start'
               : 'justify-between'
-          } lg:pb-0 pb-8 lg:px-0 sm:px-8 px-6 text-primaryDark font-semibold text-primaryDark font-semibold lg:text-xl md:text-lg`}
+          } lg:pb-4 pb-8 lg:px-4 sm:px-8 px-6 text-primaryDark font-semibold text-primaryDark font-semibold text-md`}
         >
           {registrationSection > 0 && (
             <div
               style={{ gridArea: '1 / 1 / 2 / 2' }}
-              className="cursor-pointer select-none"
               // className="lg:fixed 2xl:bottom-8 2xl:left-8 bottom-6 left-6 inline cursor-pointer select-none"
               onClick={() => {
                 setRegistrationSection(registrationSection - 1);
               }}
             >
-              <ChevronLeftIcon />
-              previous page
+              <div
+                style={{ width: 'fit-content' }}
+                className="cursor-pointer select-none bg-primaryDark text-white rounded-md p-3"
+              >
+                <ChevronLeftIcon />
+                prev page
+              </div>
             </div>
           )}
 
-          <div className="flex justify-center" style={{ gridArea: '1 / 2 / 2 / 3' }}>
+          <div className="flex justify-center items-center" style={{ gridArea: '1 / 2 / 2 / 3' }}>
             {Array.from({ length: 5 }).map((_, i) => (
               <div
                 key={i}
                 style={{ backgroundColor: registrationSection == i ? '#4C4950' : '#9F9EA7' }}
-                className="rounded-full w-5 h-5 mr-2"
+                className="rounded-full w-3 h-3 mr-2"
               />
             ))}
           </div>
 
           {registrationSection < 4 && (
             <div
-              className="flex justify-end pr-20 cursor-pointer select-none"
+              className="flex justify-end "
               style={{ gridArea: '1 / 3 / 2 / 4' }}
               onClick={() => {
                 setRegistrationSection(registrationSection + 1);
               }}
             >
-              next page
-              <ChevronRightIcon />
+              <div className="cursor-pointer select-none bg-primaryDark text-white rounded-md p-3">
+                next page
+                <ChevronRightIcon />
+              </div>
             </div>
           )}
         </section>
