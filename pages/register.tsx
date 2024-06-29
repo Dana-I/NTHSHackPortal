@@ -194,7 +194,6 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="pl-4 relative mb-4">
-        {/* TODO: update */}
         <Link href="/" passHref>
           <a className="absolute top-4 z-10">
             <ChevronLeftIcon fontSize={'large'} color={'primary'} />
