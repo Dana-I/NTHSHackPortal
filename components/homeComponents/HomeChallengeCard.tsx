@@ -8,11 +8,15 @@ export default function HomeChallengesCard(props: { challenge: Challenge; blockT
           &nbsp;
         </div>
         {/* Challenge Name */}
-        <h1 className="text-2xl font-medium">{props.challenge.title.toUpperCase()}</h1>
+        <h1 className="font-nunito text-2xl font-bold mt-4">
+          {props.challenge.title.toUpperCase()}
+        </h1>
         {/* Company Name */}
-        <h1 className="text-xl text-[#05149C]">{props.challenge.organization}</h1>
+        <h1 className="font-nunito text-xl text-[#05149C] font-bold my-4">
+          {props.challenge.organization}
+        </h1>
         {/* Description */}
-        <div className="mb-8">
+        <div className="mb-8 max-w-fit">
           <p className="text-md line-clamp-5 text-balance">{props.challenge.description}</p>
         </div>
       </div>
