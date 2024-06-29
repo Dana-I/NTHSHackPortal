@@ -12,6 +12,7 @@ import HomeTeam from '../components/homeComponents/HomeTeam';
 import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
 import HomeSchedule from '../components/homeComponents/HomeSchedule';
+import HomeFaq from '../components/homeComponents/HomeFaq';
 
 /**
  * The home page.
@@ -59,6 +60,7 @@ export default function Home(props: {
       <HomeSpeakers keynoteSpeakers={props.keynoteSpeakers} />
       <HomeChallenges challenges={props.challenges} />
       <HomeTeam members={props.fetchedMembers} />
+      <HomeFaq answeredQuestion={props.answeredQuestion} />
       <HomeSponsors sponsorCard={props.sponsorCard} />
       <HomeFooter />
     </>
