@@ -11,6 +11,7 @@ module.exports = {
         secondaryDark: '#BABFFF',
         complementary: '#05149C', //dark purple
         complementaryDark: '#252427',
+        complementaryLight: '#999999',
       },
       fontFamily: {
         sans: ['Fredoka', 'Roboto', 'sans-serif'],
