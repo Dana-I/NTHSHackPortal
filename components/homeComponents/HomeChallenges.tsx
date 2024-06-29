@@ -16,7 +16,7 @@ export default function HomeChallengesComponent(props: { challenges: Challenge[]
           </span>
           <div className="flex-1 ml-6 border-t-4 border-black"></div>
         </div>
-        <div className="w-full">
+        <div className="w-full mb-2">
           <div className="md:w-2/5 w-full mx-auto p-4 text-balance">
             <p className="text-center">
               Hackathons are 24-hour gatherings where students collaborate to create innovative
@@ -24,7 +24,7 @@ export default function HomeChallengesComponent(props: { challenges: Challenge[]
             </p>
           </div>
         </div>
-        <div className="md:grid md:grid-cols-3 lg:grid-cols-4 flex flex-col gap-x-6 gap-y-[140px] mt-6">
+        <div className="md:grid md:grid-cols-3 lg:p-10 flex flex-col items-center gap-x-6 mt-6">
           {challenges.map((challenge, idx) => (
             <HomeChallengesCard key={idx} challenge={challenge} blockType={idx % 3} />
           ))}
