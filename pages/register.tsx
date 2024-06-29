@@ -14,6 +14,7 @@ import Link from 'next/link';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { GetServerSideProps } from 'next';
+import { grid } from '@mui/system';
 
 interface RegisterPageProps {
   allowedRegistrations: boolean;
@@ -40,7 +41,8 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
 
   const { user, hasProfile, updateProfile } = useAuthContext();
   const [resumeFile, setResumeFile] = useState<File | null>(null);
-  const [loading, setLoading] = useState(true);
+  // update this to false for testing
+  const [loading, setLoading] = useState(false);
   const [formValid, setFormValid] = useState(true);
   const [registrationSection, setRegistrationSection] = useState(0);
   const checkRedirect = async () => {
@@ -58,9 +60,10 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
     formInitialValues['permissions'] = user?.permissions || ['hacker'];
   }, []);
 
-  useEffect(() => {
-    checkRedirect();
-  }, [user]);
+  // disbale this for testing
+  // useEffect(() => {
+  //   checkRedirect();
+  // }, [user]);
 
   const handleSubmit = async (registrationData) => {
     let resumeUrl: string = '';
@@ -125,9 +128,10 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
     );
   }
 
-  if (!user) {
-    router.push('/');
-  }
+  // disable this for testing
+  // if (!user) {
+  //   router.push('/');
+  // }
 
   if (loading) {
     return <LoadIcon width={200} height={200} />;
@@ -190,18 +194,10 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="pt-4 pl-4">
+        {/* TODO: update */}
         <Link href="/" passHref>
-          <div className="cursor-pointer items-center inline-flex text-primaryDark font-semibold sm:text-lg">
-            <ChevronLeftIcon />
-            return to event site
-          </div>
+          <ChevronLeftIcon className="text-primaryDark text-6xl absolute" />
         </Link>
-      </section>
-      <section
-        id="jumbotron"
-        className="text-primaryDark lg:text-4xl sm:text-3xl text-2xl font-bold text-center lg:mt-0 mt-6 mb-6"
-      >
-        HackPortal Hacker Registration
       </section>
 
       <section className="relative">
@@ -281,8 +277,16 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
             >
               {/* General Questions */}
               {registrationSection == 0 && (
-                <section className="bg-white lg:w-3/5 md:w-3/4 w-full min-h-[35rem] mx-auto rounded-2xl md:py-10 py-6 px-8 mb-8 text-[#4C4950]">
-                  <h2 className="sm:text-2xl text-xl font-semibold sm:mb-3 mb-1">General</h2>
+                <section className="bg-white lg:w-3/5 md:w-3/4 w-full min-h-[35rem] mx-auto rounded-2xl md:py-4 py-6 px-8 mb-8 text-[#4C4950]">
+                  <header>
+                    <h1 className="text-primaryDark lg:text-4xl sm:text-3xl text-2xl font-bold text-center lg:mt-0 mt-4 mb-4 poppins-bold">
+                      Hacker Registration
+                    </h1>
+                    <div style={{ color: '#A6A4A8' }} className="poppins-regular text-center mb-6">
+                      Please fill out the following fields. The application should take
+                      approximately 5 minutes.
+                    </div>
+                  </header>
                   <div className="flex flex-col">
                     {generalQuestions.map((obj, idx) => (
                       <DisplayQuestion
@@ -401,7 +405,11 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
 
         {/* Pagniation buttons */}
         <section
-          className={`lg:block flex ${
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr',
+          }}
+          className={`lg:block ${
             registrationSection == 0
               ? 'justify-end'
               : registrationSection >= 4
@@ -411,7 +419,9 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
         >
           {registrationSection > 0 && (
             <div
-              className="lg:fixed 2xl:bottom-8 2xl:left-8 bottom-6 left-6 inline cursor-pointer select-none"
+              style={{ gridArea: '1 / 1 / 2 / 2' }}
+              className="cursor-pointer select-none"
+              // className="lg:fixed 2xl:bottom-8 2xl:left-8 bottom-6 left-6 inline cursor-pointer select-none"
               onClick={() => {
                 setRegistrationSection(registrationSection - 1);
               }}
@@ -421,9 +431,20 @@ export default function Register({ allowedRegistrations }: RegisterPageProps) {
             </div>
           )}
 
+          <div className="flex justify-center" style={{ gridArea: '1 / 2 / 2 / 3' }}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div
+                key={i}
+                style={{ backgroundColor: registrationSection == i ? '#4C4950' : '#9F9EA7' }}
+                className="rounded-full w-5 h-5 mr-2"
+              />
+            ))}
+          </div>
+
           {registrationSection < 4 && (
             <div
-              className="lg:fixed 2xl:bottom-8 2xl:right-8 bottom-6 right-6 inline cursor-pointer select-none"
+              className="flex justify-end pr-20 cursor-pointer select-none"
+              style={{ gridArea: '1 / 3 / 2 / 4' }}
               onClick={() => {
                 setRegistrationSection(registrationSection + 1);
               }}
