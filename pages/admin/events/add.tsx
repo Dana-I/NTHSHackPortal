@@ -3,7 +3,7 @@ import EventForm from '../../../components/adminComponents/eventComponents/Event
 import { RequestHelper } from '../../../lib/request-helper';
 import { useAuthContext } from '../../../lib/user/AuthContext';
 import Link from 'next/link';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 function isAuthorized(user): boolean {
   if (!user || !user.permissions) return false;
@@ -42,7 +42,7 @@ export default function AddEventPage() {
   return (
     <div className="2xl:px-36 md:px-16 px-6">
       <div className="mt-4">
-        <Link href="/admin/events" passHref>
+        <Link href="/admin/events" passHref legacyBehavior>
           <div className="cursor-pointer items-center inline-flex text-primaryDark font-bold md:text-lg text-base">
             <ChevronLeftIcon />
             Return to events

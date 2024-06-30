@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import CalendarIcon from '@material-ui/icons/CalendarToday';
-import PinDrop from '@material-ui/icons/PinDrop';
-import ClockIcon from '@material-ui/icons/AccessTime';
-import Backpack from '@material-ui/icons/LocalMall';
-import firebase from 'firebase';
+import CalendarIcon from '@mui/icons-material/CalendarToday';
+import PinDrop from '@mui/icons-material/PinDrop';
+import ClockIcon from '@mui/icons-material/AccessTime';
+import Backpack from '@mui/icons-material/LocalMall';
+import firebase from 'firebase/compat/app';
 
 /**
  * HackCenter Spotlight Card Component

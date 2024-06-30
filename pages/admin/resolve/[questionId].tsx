@@ -8,7 +8,7 @@ import PendingQuestion from '../../../components/dashboardComponents/PendingQues
 import { RequestHelper } from '../../../lib/request-helper';
 import { useAuthContext } from '../../../lib/user/AuthContext';
 import { QADocument } from '../../api/questions';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 /**
  * Resolve question page.
@@ -60,7 +60,7 @@ export default function ResolveQuestionPage({
 
   return (
     <div className="py-6 2xl:px-32 md:px-16 px-6">
-      <Link href="/admin" passHref>
+      <Link href="/admin" passHref legacyBehavior>
         <div className="cursor-pointer items-center inline-flex text-primaryDark font-bold md:text-lg text-base">
           <ChevronLeftIcon />
           return to event dashboard
