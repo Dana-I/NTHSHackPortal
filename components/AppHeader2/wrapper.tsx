@@ -75,16 +75,27 @@ export default function AppHeader2_Wrapper() {
 
   return (
     <header
-      className={'hidden md:flex flex-col w-full relative'}
-      style={{ height, marginBottom: -(height - TOP_OFFSET) }}
+      className={clsx(
+        'hidden md:flex flex-col w-full',
+        'fixed top-0 z-[1000]', // NOTE: Comment line below for special hiding effect
+
+        // NOTE: Uncomment line below for special hiding effect
+        // 'relative z-[1000]',
+      )}
+
+      // NOTE: Uncomment line below for special hiding effect
+      // style={{ height, marginBottom: -(height - TOP_OFFSET) }}
     >
       {/* App header core */}
       <div
         ref={appHeaderRef}
-        className={clsx('sticky top-0 z-[1000] w-full bg-transparent')}
-        style={{
-          height: APP_HEADER_HEIGHT,
-        }}
+        className={'w-full bg-transparent'} // NOTE: Comment this line for special hiding effect
+
+        // NOTE: Uncomment this block for special hiding effect
+        // className={clsx('sticky top-0 w-full bg-transparent')}
+        // style={{
+        //   height: APP_HEADER_HEIGHT,
+        // }}
       >
         <AppHeader2_Core />
       </div>
