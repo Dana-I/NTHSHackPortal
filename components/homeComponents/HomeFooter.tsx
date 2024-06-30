@@ -4,7 +4,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 export default function HomeFooter() {
   return (
-    <section className=" mt-16 px-6 py-8 md:text-base text-xs">
+    <section className=" mt-16 px-6 pt-8 pb-24 md:py-8 md:text-base text-xs">
       <hr className="my-4 bg-complementary" />
       <div className="flex flex-col items-center justify-center gap-2 text-complementary text-center">
         <div className="text-base md:text-lg">

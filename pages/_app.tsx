@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import 'firebase/auth';
-import AppHeader from '../components/AppHeader';
 import { initFirebase } from '../lib/firebase-client';
 import { AuthProvider } from '../lib/user/AuthContext';
 import '../styles/globals.css';
@@ -22,6 +21,8 @@ import { useEffect, useState } from 'react';
 import { initParticlesEngine } from '../components/Particles';
 import { loadSlim } from '@tsparticles/slim';
 import { ParticlesContext } from '../components/Particles/ParticlesProvider';
+import AppHeader2_Wrapper from '@/components/AppHeader2/wrapper';
+import AppNavbarBottom from '@/components/AppNavbarBottom/AppNavbarBottom';
 
 initFirebase();
 
@@ -83,8 +84,9 @@ function PortalApp({ Component, pageProps }: AppProps) {
               </Head>
 
               <div className="min-h-screen flex flex-col bg-white">
-                {/* <AppHeader /> */}
+                <AppHeader2_Wrapper />
                 <Component {...pageProps} />
+                <AppNavbarBottom />
               </div>
             </ParticlesContext.Provider>
           </FCMProvider>

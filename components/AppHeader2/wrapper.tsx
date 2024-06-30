@@ -81,7 +81,7 @@ export default function AppHeader2_Wrapper() {
       {/* App header core */}
       <div
         ref={appHeaderRef}
-        className={clsx('sticky top-0 z-50 w-full bg-transparent')}
+        className={clsx('sticky top-0 z-[1000] w-full bg-transparent')}
         style={{
           height: APP_HEADER_HEIGHT,
         }}

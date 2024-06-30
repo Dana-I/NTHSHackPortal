@@ -1,21 +1,11 @@
-import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Circles from '../../public/assets/circles.svg';
 import MLH_Sticker from '../../public/assets/mlh-sticker.png';
-import AppHeader2_Wrapper from '../AppHeader2/wrapper';
 import BackgroundCircles from '../BackgroundCircles';
 
 export default function HomeHero() {
-  const router = useRouter();
-
   return (
     <section className="min-h-screen bg-contain bg-white flex flex-col-reverse md:flex-col">
-      {/* App header */}
-      <AppHeader2_Wrapper />
-
       <div className="flex h-screen w-full relative">
-        {/* Circles */}
-        {/* <Circles className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[600px] max-w-[75vw] h-auto" /> */}
         <div className="w-full h-full absolute top-0 left-0 z-0">
           <BackgroundCircles />
         </div>
@@ -43,7 +33,7 @@ export default function HomeHero() {
       </div>
 
       {/* Bottom banner */}
-      <div className="font-dmSans w-full flex justify-center bg-[#7B81FF] text-white h-[1.75rem] text-nowrap">
+      <div className="font-dmSans w-full flex justify-center bg-[#7B81FF] text-white h-[1.75rem] text-nowrap overflow-hidden">
         <p className="text-lg">
           SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE TEXT • SAMPLE
           TEXT • SAMPLE TEXT • SAMPLE TEXT

@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { useEffect, useState } from 'react';
 import { RequestHelper } from '../lib/request-helper';
-import HomeHero from '../components/homeComponents/HomeHero';
 import HomeNotif from '../components/homeComponents/HomeNotif';
 import HomeVideoStats from '../components/homeComponents/HomeVideoStats';
 import HomeAbout from '../components/homeComponents/HomeAbout';
@@ -12,6 +11,7 @@ import HomeTeam from '../components/homeComponents/HomeTeam';
 import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
 import HomeHero2 from '../components/homeComponents/HomeHero2';
+import AppHeader2_Wrapper from '@/components/AppHeader2/wrapper';
 
 /**
  * The home page.

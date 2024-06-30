@@ -21,8 +21,6 @@ export default function HomeChallenges(props: { challenges: Challenge[] }) {
   });
   const [showChallengeCard, setShowChallengeCard] = useState(false);
 
-  const [windowWidth, setWindowWidth] = useState(0);
-
   useEffect(() => {
     // Organize challenges in order by rank given in firebase
     const sortedChallenges = props.challenges.sort((a, b) => (a.rank > b.rank ? 1 : -1));
@@ -49,16 +47,6 @@ export default function HomeChallenges(props: { challenges: Challenge[] }) {
       prizes: challenge.prizes,
     });
   };
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     challenges.length != 0 && (

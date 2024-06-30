@@ -1,30 +1,33 @@
-import { useEffect, useMemo, useState } from 'react';
-import {
-  Container,
-  IOptionLoader,
-  ISourceOptions,
-  Options,
-  RotateDirection,
-} from '@tsparticles/engine';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Container, ISourceOptions, RotateDirection } from '@tsparticles/engine';
 import Particles from './Particles';
 import { useParticles } from './Particles/ParticlesProvider';
 
 export default function BackgroundCircles() {
   const { state: particlesState } = useParticles();
+
   const [windowWidth, setWindowWidth] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
+  const timeoutSetWindowSize = useRef(-1);
 
   // tsparticles does not have documentation on size.value unit
   // after experimenting with it, the scaling factor to convert from pixels to size.value is to multiply pixels with 0.5
   const scaleFactor = 0.5;
 
-  const particlesLoaded = (container?: Container) => {
-    console.log(container);
+  const particlesLoaded = (_container?: Container) => {
     return Promise.resolve();
   };
 
   useEffect(() => {
     const resizeHandler = () => {
-      setWindowWidth(window.innerWidth);
+      if (timeoutSetWindowSize.current) {
+        window.clearTimeout(timeoutSetWindowSize.current);
+      }
+
+      timeoutSetWindowSize.current = window.setTimeout(() => {
+        setWindowWidth(window.innerWidth);
+        setWindowHeight(window.innerHeight);
+      }, 200);
     };
 
     resizeHandler(); // Init
@@ -79,14 +82,15 @@ export default function BackgroundCircles() {
           },
         },
         size: {
-          value: Math.min(windowWidth * 0.75 * scaleFactor, 600 * scaleFactor),
+          value: Math.min(
+            Math.min(windowWidth, windowHeight) * 0.75 * scaleFactor,
+            600 * scaleFactor,
+          ),
         },
       },
     }),
-    [windowWidth],
+    [windowWidth, windowHeight],
   );
-
-  console.log(options, windowWidth);
 
   if (particlesState.init) {
     return (

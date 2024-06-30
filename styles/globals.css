@@ -138,7 +138,6 @@ a.link {
   transition: max-height 0.2s ease-out;
 }
 
-
 .footerIcon {
   transform: scale(1.5);
 }
@@ -184,7 +183,7 @@ a.link {
 
 .swiper-pagination-bullet,
 .swiper-pagination-bullet-tracks {
-  background-color: #4C4950 !important;
+  background-color: #4c4950 !important;
   opacity: 1;
 }
 
@@ -193,3 +192,4 @@ a.link {
   transition: opacity 0.5s ease-in;
   transition-delay: 3s;
 }
+
