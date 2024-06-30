@@ -5,13 +5,16 @@ import { useAuthContext } from '../lib/user/AuthContext';
 import LoadIcon from '../components/LoadIcon';
 import { getFileExtension } from '../lib/util';
 import QRCode from '../components/dashboardComponents/QRCode';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LanguageIcon from '@mui/icons-material/Language';
 
 /**
  * A page that allows a user to modify app or profile settings and see their data.
  *
  * Route: /profile
  */
-export default function ProfilePage() {
+export default function ProfilePage({ userStatus }) {
   const router = useRouter();
   const { isSignedIn, hasProfile, user, profile } = useAuthContext();
   const [uploading, setUploading] = useState<boolean>(false);
@@ -68,8 +71,8 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="xl:px-36 lg:px-28 sm:px-16 px-10 md:py-16 py-12 text-complementary">
-      <div className="flex flex-col md:flex-row 2xl:gap-x-32 gap-x-20 2xl:justify-center">
+    <div className="md:px-48 px-8 md:py-16 py-12 text-black">
+      <div className="flex flex-col md:flex-row 2xl:gap-x-14 gap-x-12 2xl:justify-center">
         {/* QR Code */}
         <div className="">
           <div className="bg-secondary rounded-lg p-8 h-min w-min mx-auto">
@@ -84,53 +87,103 @@ export default function ProfilePage() {
             />
           </div>
           <div className="border-y-[1.2px] border-primaryDark/20 py-4 md:my-8 my-6">
-            <div className="font-bold text-lg">Role</div>
-            <h1 className="text-xl">{profile.user.permissions[0]}</h1>
+            <div className="font-Fredoka font-semibold text-lg">Application Status</div>
+            <h1 className="font-Fredoka text-xl">{userStatus ? userStatus : 'Pending'}</h1>
+          </div>
+
+          <div className="flex gap-x-4">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#9CA6FF]">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer">
+                <LinkedInIcon style={{ fontSize: 29, color: 'white' }} />
+              </a>
+            </div>
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#9CA6FF]">
+              <a href={profile.github} target="_blank" rel="noreferrer">
+                <GitHubIcon style={{ fontSize: 29, color: 'white' }} />
+              </a>
+            </div>
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#9CA6FF]">
+              <a href={profile.website} target="_blank" rel="noreferrer">
+                <LanguageIcon style={{ fontSize: 29, color: 'white' }} />
+              </a>
+            </div>
+
+            <div className="my-2">
+              {!uploading ? (
+                <>
+                  <input
+                    id="resume"
+                    style={{ display: 'none' }}
+                    type="file"
+                    ref={resumeRef}
+                    onChange={() => handleResumeUpload(profile)}
+                    accept=".pdf, .doc, .docx, image/png, image/jpeg, .txt, .tex, .rtf"
+                  />
+                  <label
+                    id="resume_label"
+                    className="font-Fredoka transition py-3 font-semibold px-6 text-sm text-center whitespace-nowrap text-white w-min bg-[#5C67C9] rounded-full cursor-pointer hover:brightness-110"
+                    htmlFor="resume"
+                  >
+                    Resume
+                  </label>
+                </>
+              ) : (
+                <LoadIcon width={16} height={16} />
+              )}
+            </div>
           </div>
         </div>
+
         {/* Info */}
-        <div className="">
-          <h1 className="font-semibold md:text-5xl text-4xl">{`${profile.user.firstName} ${profile.user.lastName}`}</h1>
+        <div className="w-full">
+          <h1 className="font-Fredoka font-semibold text-5xl md:mt-0 mt-10 text-[#170F49]">{`${profile.user.firstName} ${profile.user.lastName}`}</h1>
 
-          <div className="font-semibold md:text-2xl text-xl mt-6 mb-1">Major</div>
-          <h1 className="text-xl">{profile.major}</h1>
+          <div className="md:flex items-center md:gap-x-10 mt-4">
+            <div className="md:w-1/2">
+              <div className="font-Fredoka font-semibold md:text-2xl text-lg mt-6 mb-1 text-[#170F49]">
+                University
+              </div>
+              <h1 className="px-3 py-1 text-lg border border-3 border-[#C4C4C4] rounded-2xl text-[#4C4950]">
+                {profile.university}
+              </h1>
 
-          <div className="font-semibold md:text-2xl text-xl mt-6 mb-1">University</div>
-          <h1 className="text-xl">{profile.university}</h1>
+              <div className="font-Fredoka font-semibold md:text-2xl text-lg mt-6 mb-1 text-[#170F49]">
+                Major
+              </div>
+              <h1 className="px-3 py-1 text-lg border border-3 border-[#C4C4C4] rounded-2xl text-[#4C4950]">
+                {profile.major}
+              </h1>
 
-          <div className="font-semibold md:text-2xl text-xl mt-6 mb-1">Level of Study</div>
-          <h1 className="text-xl">{profile.studyLevel}</h1>
+              <div className="font-Fredoka font-semibold md:text-2xl text-lg mt-6 mb-1 text-[#170F49]">
+                Level of Study
+              </div>
+              <h1 className="px-3 py-1 text-lg border border-3 border-[#C4C4C4] rounded-2xl text-[#4C4950]">
+                {profile.studyLevel}
+              </h1>
+            </div>
 
-          <div className="font-semibold md:text-2xl text-xl mt-6" mb-1>
-            Number of Hackathons Attended
-          </div>
-          <h1 className="text-xl">{profile.hackathonExperience}</h1>
+            <div className="md:w-1/2">
+              <div className="font-Fredoka font-semibold md:text-2xl text-lg mt-6 mb-1 text-[#170F49]">
+                Role
+              </div>
+              <h1 className="px-3 py-1 text-lg border border-3 border-[#C4C4C4] rounded-2xl text-[#4C4950]">
+                {profile.user.permissions[0]}
+              </h1>
 
-          <div className="font-semibold md:text-2xl text-xl mt-6 mb-1">Preferred Email</div>
-          <h1 className="text-xl">{profile.user.preferredEmail}</h1>
+              <div className="font-Fredoka font-semibold md:text-2xl text-lg mt-6 mb-1 text-[#170F49]">
+                Number of Hackathons Attended
+              </div>
+              <h1 className="px-3 py-1 text-lg border border-3 border-[#C4C4C4] rounded-2xl text-[#4C4950]">
+                {profile.hackathonExperience}
+              </h1>
 
-          <div className="my-8">
-            {!uploading ? (
-              <>
-                <input
-                  id="resume"
-                  style={{ display: 'none' }}
-                  type="file"
-                  ref={resumeRef}
-                  onChange={() => handleResumeUpload(profile)}
-                  accept=".pdf, .doc, .docx, image/png, image/jpeg, .txt, .tex, .rtf"
-                />
-                <label
-                  id="resume_label"
-                  className="transition rounded p-3 text-center whitespace-nowrap text-white w-min bg-gray-500 cursor-pointer font-black gap-y-2 hover:brightness-110"
-                  htmlFor="resume"
-                >
-                  Update Resume
-                </label>
-              </>
-            ) : (
-              <LoadIcon width={16} height={16} />
-            )}
+              <div className="font-Fredoka font-semibold md:text-2xl text-lg mt-6 mb-1 text-[#170F49]">
+                Preferred Email
+              </div>
+              <h1 className="px-3 py-1 text-lg border border-3 border-[#C4C4C4] rounded-2xl text-[#4C4950]">
+                {profile.user.preferredEmail}
+              </h1>
+            </div>
           </div>
         </div>
       </div>

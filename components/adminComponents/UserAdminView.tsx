@@ -13,6 +13,7 @@ interface UserAdminViewProps {
   onUserClick: (id: string) => void;
   onAcceptReject: (status: string) => void;
   onUpdateRole: (newRole: UserPermission) => void;
+  userStatus: string;
 }
 
 export default function UserAdminView({
@@ -22,6 +23,7 @@ export default function UserAdminView({
   onUserClick,
   onAcceptReject,
   onUpdateRole,
+  userStatus,
 }: UserAdminViewProps) {
   let currentUserIndex = 0;
   const currentUser = users.find((user, i) => {

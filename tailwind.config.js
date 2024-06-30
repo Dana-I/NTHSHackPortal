@@ -15,6 +15,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Fredoka', 'Roboto', 'sans-serif'],
+        Fredoka: ['Fredoka', 'sans-serif'],
       },
       width: {
         '1/8': '12.5%',
