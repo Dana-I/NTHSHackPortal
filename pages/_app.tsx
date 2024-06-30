@@ -86,6 +86,9 @@ function PortalApp({ Component, pageProps }: AppProps) {
               <div className="min-h-screen flex flex-col bg-white">
                 <AppHeader2_Wrapper />
                 <Component {...pageProps} />
+
+                {/* Spacer at the bottom of the page for navbar bottom on mobile, so that content won't be covered by the navbar */}
+                <div className="md:hidden h-[80px] shrink-0" />
                 <AppNavbarBottom />
               </div>
             </ParticlesContext.Provider>
