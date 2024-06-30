@@ -9,15 +9,16 @@ module.exports = {
         primaryDark: '#05149C',
         secondary: '#F2F3FF', //light purple
         secondaryDark: '#BABFFF',
-        complementary: '#4C4950', //gray
+        complementary: '#05149C', //dark purple
         complementaryDark: '#252427',
+        complementaryLight: '#999999',
       },
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
         fredoka: ['Fredoka', 'sans-serif'],
         dmsans: ['DM Sans', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        sans: ['Fredoka', 'Roboto', 'sans-serif'],
       },
       width: {
         '1/8': '12.5%',

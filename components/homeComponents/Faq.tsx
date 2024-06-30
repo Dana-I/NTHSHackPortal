@@ -52,9 +52,9 @@ export default function FaqPage({ fetchedFaqs }: { fetchedFaqs: AnsweredQuestion
       </Head>
       {/* <AboutHeader active="/about/faq" /> */}
       <div className="top-6">
-        <div className="flex flex-row justify-between items-center py-2">
-          <h4 className="font-bold md:text-4xl text-2xl my-4 text-complementary">FAQ</h4>
-          <div className="flex flex-row items-center gap-x-2">
+        <div className="flex flex-row justify-between items-center py-1">
+          {/* <h4 className="font-bold md:text-4xl text-2xl my-4 text-complementary">FAQ</h4> */}
+          {/* <div className="flex flex-row items-center gap-x-2">
             <button
               onClick={() => {
                 if (disclosuresStatus.every((status) => status)) {
@@ -74,7 +74,7 @@ export default function FaqPage({ fetchedFaqs }: { fetchedFaqs: AnsweredQuestion
                   : 'transition duration-500 ease-in-out'
               } w-5 h-5`}
             />
-          </div>
+          </div> */}
         </div>
         {/* FAQ for lg-md */}
         {/* Uses different section for mobile because using 2 columns is buggy when expanding FAQs */}
