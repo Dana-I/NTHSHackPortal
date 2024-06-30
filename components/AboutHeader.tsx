@@ -21,25 +21,19 @@ export default function AboutHeader({ active }: AboutHeaderProps) {
       <header className="top-0 sticky flex flex-row justify-between p-2 md:p-4 items-center">
         <div className="mx-auto md:flex justify-center text-xl font-header md:text-left gap-x-8">
           <Link href="/about">
-            <a>
-              <span className="inline md:invisible"></span>
-              <a
-                className={`link font-bold ${active === '/about' && 'border-b-2 border-black p-2'}`}
-              >
-                About
-              </a>
+            <span className="inline md:invisible"></span>
+            <a className={`link font-bold ${active === '/about' && 'border-b-2 border-black p-2'}`}>
+              About
             </a>
           </Link>
           <Link href="/about/faq">
-            <a>
-              <span className="inline md:invisible"></span>
-              <a
-                className={`link font-bold ${
-                  active === '/about/faq' && 'border-b-2 border-black p-2'
-                }`}
-              >
-                FAQ
-              </a>
+            <span className="inline md:invisible"></span>
+            <a
+              className={`link font-bold ${
+                active === '/about/faq' && 'border-b-2 border-black p-2'
+              }`}
+            >
+              FAQ
             </a>
           </Link>
         </div>

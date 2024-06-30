@@ -21,8 +21,8 @@ function NavLink({ href, exact, activeOptions, children, ...props }) {
   }
 
   return (
-    <Link href={href}>
-      <a {...props}>{children}</a>
+    <Link href={href} {...props}>
+      {children}
     </Link>
   );
 }

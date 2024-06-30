@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import ProfileDialog from './ProfileDialog';
 import { useUser } from '../lib/profile/user-data';
 import { useAuthContext } from '../lib/user/AuthContext';
 import { navItems } from '../lib/data';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 import Image from 'next/image';
 import NavLink from './NavLink';
 
@@ -87,22 +88,25 @@ export default function AppHeader() {
               {dynamicNavItems
                 .filter(({ text }) => text !== 'Home')
                 .map((item) => (
-                  <Link key={item.text} href={item.path}>
-                    <a className="p-9 py-6 hover:bg-primaryDark hover:text-white text-complementary">
-                      <p className="text-xl font-medium">{item.text}</p>
-                    </a>
+                  <Link
+                    key={item.text}
+                    href={item.path}
+                    className="p-9 py-6 hover:bg-primaryDark hover:text-white text-complementary"
+                  >
+                    <p className="text-xl font-medium">{item.text}</p>
                   </Link>
                 ))}
             </ul>
           </div>
-          <Link href="/">
-            <a className="flex gap-2 ml-[6px] font-display self-center items-center md:ml-0">
-              {/* !change src */}
-              <Image src={'/assets/hp-logo.png'} width="45px" height="35px" />
-              <span className="text-lg font-black md:z-0 md:text-3xl text-primaryDark">
-                HackPortal
-              </span>
-            </a>
+          <Link
+            href="/"
+            className="flex gap-2 ml-[6px] font-display self-center items-center md:ml-0"
+          >
+            {/* !change src */}
+            <Image alt="HackPortal logo" src={'/assets/hp-logo.png'} width={45} height={35} />
+            <span className="text-lg font-black md:z-0 md:text-3xl text-primaryDark">
+              HackPortal
+            </span>
           </Link>
         </div>
 

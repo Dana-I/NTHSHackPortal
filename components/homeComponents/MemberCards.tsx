@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import 'firebase/storage';
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
 import Image from 'next/image';
 import defaultPFP from '../../public/assets/defaultPFP.jpg';
-import GitHubIcon from '@material-ui/icons/GitHub';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PersonIcon from '@mui/icons-material/Person';
 
@@ -12,7 +12,7 @@ import PersonIcon from '@mui/icons-material/Person';
  */
 
 export default function MemberCards(props) {
-  const [imageLink, setImageLink] = useState();
+  const [imageLink, setImageLink] = useState<string | undefined>();
 
   useEffect(() => {
     if (props.fileName !== undefined) {

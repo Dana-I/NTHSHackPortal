@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import NotesIcon from '@material-ui/icons/Notes';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import NotesIcon from '@mui/icons-material/Notes';
 import { useAuthContext } from '../lib/user/AuthContext';
 
 /**
@@ -74,30 +74,24 @@ export default function ProfileDialog({ onDismiss }: ProfileDialogProps) {
       {(isSignedIn && (
         <>
           <div onClick={onDismiss}>
-            <Link href="/profile">
-              <a className="block p-4 hover:bg-gray-200">
-                <NotesIcon />
-                <span className="ml-4">{hasProfile ? 'Your profile' : 'Register'}</span>
-              </a>
+            <Link href="/profile" className="block p-4 hover:bg-gray-200">
+              <NotesIcon />
+              <span className="ml-4">{hasProfile ? 'Your profile' : 'Register'}</span>
             </Link>
           </div>
           <div className="rounded-b-md" onClick={onDismiss}>
-            <Link href="/auth/signOut">
-              <a className="block p-4 hover:bg-gray-200 rounded-b-md">
-                <ExitToAppIcon />
-                <span className="ml-4">Sign out</span>
-              </a>
+            <Link href="/auth/signOut" className="block p-4 hover:bg-gray-200 rounded-b-md">
+              <ExitToAppIcon />
+              <span className="ml-4">Sign out</span>
             </Link>
           </div>
         </>
       )) || (
         <div className="rounded-b-md" onClick={onDismiss}>
-          <Link href="/auth">
-            <a className="block p-4 hover:bg-gray-200 rounded-b-md">
-              {/* TODO: Swap with better icon */}
-              <ExitToAppIcon />
-              <span className="ml-4">Sign in</span>
-            </a>
+          <Link href="/auth" className="block p-4 hover:bg-gray-200 rounded-b-md">
+            {/* TODO: Swap with better icon */}
+            <ExitToAppIcon />
+            <span className="ml-4">Sign in</span>
           </Link>
         </div>
       )}
