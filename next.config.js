@@ -9,9 +9,23 @@ const withPWA = require('next-pwa')({
 
 (module.exports = withPWA({
   reactStrictMode: true,
+
   images: {
-    domains: ['lh3.googleusercontent.com', 'firebasestorage.googleapis.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+      },
+    ],
   },
+
+  // https://sebhastian.com/javascript-unexpected-token-export/
+  // https://nextjs.org/docs/app/api-reference/next-config-js/transpilePackages
+  transpilePackages: ['@ant-design/icons-svg', 'rc-util'],
 
   webpack(config, options) {
     config.module.rules.push({

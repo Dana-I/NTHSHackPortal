@@ -1,4 +1,9 @@
-import { ResponsiveBar } from '@nivo/bar';
+import dynamic from 'next/dynamic';
+
+// https://github.com/plouc/nivo/issues/2310
+const ResponsiveBar = dynamic(() => import('@nivo/bar').then((m) => m.ResponsiveBar), {
+  ssr: false,
+});
 
 interface NivoBarChartProps {
   name: string;

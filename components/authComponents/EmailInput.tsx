@@ -1,5 +1,5 @@
 import React from 'react';
-import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 
 // Define the type for the props by extending React.HTMLProps<HTMLInputElement>
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}

@@ -119,9 +119,7 @@ export default function Admin({ questions }: { questions: QADocument[] }) {
         <h1 className="font-bold text-xl text-complementary">Pending Questions: </h1>
         {questions.map((question, idx) => (
           <Link key={idx} passHref href={`/admin/resolve/${question.id}`}>
-            <a>
-              <PendingQuestion key={idx} question={question.question} />
-            </a>
+            <PendingQuestion key={idx} question={question.question} />
           </Link>
         ))}
       </div>
