@@ -8,6 +8,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import GoogleIcon from '../../public/icons/googleicon.png';
 import Image from 'next/image';
+import EmailInput from '../../components/authComponents/EmailInput';
+import PasswordInput from '../../components/authComponents/PasswordInput';
 /**
  * A page that allows the user to sign in.
  *
@@ -21,7 +23,7 @@ export default function AuthPage() {
   const [passwordResetDialog, setPasswordResetDialog] = useState(false);
   const [sendVerification, setSendVerification] = useState(false);
   const [signInOption, setSignInOption] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const router = useRouter();
   const signIn = () => {
@@ -131,43 +133,45 @@ export default function AuthPage() {
             >
               {!passwordResetDialog ? (
                 <>
-                  <h1 className="md:text-3xl text-2xl font-black text-center text-primaryDark mt-4">
-                    {signInOption ? 'Sign in' : 'Create an account'}
+                  <h1 className="md:text-3xl text-2xl text-center text-primaryDark mt-4 poppins-bold">
+                    {signInOption ? 'Login' : 'Create an account'}
                   </h1>
-                  <div className="text-center text-complementary/60 mt-4 mb-12">
-                    {signInOption ? ' New to HackPortal?' : 'Already have an account?'}{' '}
+                  <div className="text-center text-complementary/60 mt-4 mb-12 poppins-semibold">
+                    {signInOption ? ' New to HackUTD?' : 'Already have an account?'}{' '}
                     <span
                       onClick={() =>
                         signInOption ? setSignInOption(false) : setSignInOption(true)
                       }
-                      className="text-primary cursor-pointer"
+                      className="text-primaryDark cursor-pointer underline"
                     >
-                      {signInOption ? 'Create an account' : 'Sign in'}
+                      {signInOption ? 'Register here!' : 'Sign in'}
                     </span>
                   </div>
                   <React.Fragment>
                     <form onSubmit={handleSubmit} className="mt-4">
-                      <input
-                        className="w-full rounded-md border border-complementary/20 p-2 mb-4"
-                        value={currentEmail}
+                      <EmailInput
                         onChange={(e) => setCurrentEmail(e.target.value)}
-                        type="text"
-                        name="email"
-                        autoComplete="email"
-                        placeholder="Email Address*"
-                      ></input>
-                      <input
-                        className="w-full rounded-md border border-complementary/20 p-2 mb-2"
+                        placeholder="Enter your email address"
+                        value={currentEmail}
+                      />
+                      <PasswordInput
                         value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
-                        type={showPassword ? 'text' : 'password'}
-                        name="password"
-                        autoComplete="current-password"
-                        placeholder="Password*"
-                      ></input>
-                      <div className="inline-flex md:flex justify-between md:flex-row flex-col-reverse">
+                        placeholder="Enter your password"
+                      />
+
+                      <div className="inline-flex md:flex justify-between md:flex-row flex-col-reverse poppins-semibold text-sm">
+                        <div className="text-primaryDark">
+                          {/* TODO: should this feature be implemented or does it already exist? */}
+                          <input
+                            className="mr-2 r text-primaryDark focus:ring-0 border border-primaryDark text-sm"
+                            type="checkbox"
+                            onClick={() => setRememberMe(!rememberMe)}
+                          />
+                          Remember be
+                        </div>
                         <div
-                          className="hover:underline cursor-pointer text-left text-primary"
+                          className="hover:underline cursor-pointer text-left text-primaryDark"
                           onClick={() => {
                             setPasswordResetDialog(true);
                             setErrorMsg('');
@@ -176,20 +180,12 @@ export default function AuthPage() {
                         >
                           Forgot password?
                         </div>
-                        <div className="text-primaryDark text-base">
-                          <input
-                            className="mr-2 rounded-md text-primaryDark focus:ring-0 border border-primaryDark"
-                            type="checkbox"
-                            onClick={() => setShowPassword(!showPassword)}
-                          />
-                          {showPassword ? 'Hide password' : 'Show password'}
-                        </div>
                         <input className="hidden" type="submit" value="Submit" />
                       </div>
                       <div className="flex justify-center mt-6 mb-4">
                         <button
                           type="button"
-                          className="rounded-full text-base w-full text-white bg-primaryDark hover:brightness-90 px-4 py-2"
+                          className="rounded-lg text-base w-full text-white bg-primaryDark hover:brightness-90 px-4 py-2"
                           onClick={() => {
                             handleSubmit();
                           }}
@@ -203,14 +199,17 @@ export default function AuthPage() {
                     {/* !change if needed */}
                     {/* Uncomment to allow resend verification email option (users could spam) */}
                     {/* {sendVerification && (
-                  <div className='flex justify-center'>
-                    <button className="underline" onClick={() => sendVerificationEmail()}>
-                      Resend verification
-                    </button>
-                  </div>
-                )} */}
+                    <div className='flex justify-center'>
+                      <button className="underline" onClick={() => sendVerificationEmail()}>
+                        Resend verification
+                      </button>
+                    </div>
+                  )} */}
+                    <div className="poppins-regular text-complementaryLight flex justify-center">
+                      <p>or continue with</p>
+                    </div>
                     <button
-                      className="mt-6 px-4 py-2 w-full rounded-full border border-complementary/20 text-complementary bg-white my-4 text-base font-bold text-center flex items-center justify-center"
+                      className="mt-2 px-4 py-2 w-full rounded-lg border border-complementary/20 text-complementary bg-white my-4 text-base font-bold text-center flex items-center justify-center"
                       onClick={() => signInWithGoogle()}
                     >
                       <Image src={GoogleIcon} alt="GoogleIcon" width={25} height={25} />
