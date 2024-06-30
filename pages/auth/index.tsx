@@ -2,10 +2,10 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../../lib/user/AuthContext';
 import { useState } from 'react';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import Link from 'next/link';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import GoogleIcon from '../../public/icons/googleicon.png';
 import Image from 'next/image';
 import EmailInput from '../../components/authComponents/EmailInput';
@@ -118,7 +118,7 @@ export default function AuthPage() {
     <>
       <section className="bg-secondary min-h-screen">
         <div className="p-4">
-          <Link href="/" passHref>
+          <Link href="/" passHref legacyBehavior>
             <div className="cursor-pointer items-center inline-flex text-primaryDark font-medium">
               <ChevronLeftIcon />
               return to event site

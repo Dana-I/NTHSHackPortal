@@ -1,4 +1,9 @@
-import { ResponsivePie } from '@nivo/pie';
+import dynamic from 'next/dynamic';
+
+// https://github.com/plouc/nivo/issues/2310
+const ResponsivePie = dynamic(() => import('@nivo/pie').then((m) => m.ResponsivePie), {
+  ssr: false,
+});
 
 interface NivoPieChartProps {
   name: string;

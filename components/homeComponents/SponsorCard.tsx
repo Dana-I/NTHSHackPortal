@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/storage';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
 import LoadIcon from '../LoadIcon';
 import Image from 'next/image';
 
@@ -13,7 +13,7 @@ interface SponsorCardProps {
  * Keynote Speaker card for landing page.
  */
 export default function SponsorCard(props: SponsorCardProps) {
-  const [imgSrc, setImgSrc] = useState();
+  const [imgSrc, setImgSrc] = useState<string | undefined>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,7 +40,14 @@ export default function SponsorCard(props: SponsorCardProps) {
       {imgSrc !== undefined && (
         <div className="flex justify-center">
           <a href={props.link} target="_blank" className="" rel="noreferrer">
-            <Image src={imgSrc} width={200} height={100} layout="fixed" objectFit="contain" />
+            <Image
+              alt={`Sponsor Image ${props.reference}`}
+              src={imgSrc}
+              width={200}
+              height={100}
+              layout="fixed"
+              objectFit="contain"
+            />
           </a>
           <br></br>
         </div>

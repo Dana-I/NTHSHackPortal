@@ -10,7 +10,7 @@ import LanguageIcon from '@mui/icons-material/Language';
  * Keynote Speaker card for landing page.
  */
 export default function KeynoteSpeaker(props) {
-  const [imageLink, setImageLink] = useState();
+  const [imageLink, setImageLink] = useState<string | undefined>();
 
   useEffect(() => {
     console.log(props);
