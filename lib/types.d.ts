@@ -170,6 +170,9 @@ type KeynoteSpeaker = {
   subtitle: string;
   description: string;
   fileName: string;
+  githubLink: string;
+  linkedinLink: string;
+  websiteLink: string;
 };
 
 /**
