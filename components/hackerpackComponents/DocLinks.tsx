@@ -1,8 +1,7 @@
 import React from 'react';
-import DescriptionIcon from '@material-ui/icons/Description';
-import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import Blue from '@material-ui/core/colors/blue';
-import Red from '@material-ui/core/colors/red';
+import DescriptionIcon from '@mui/icons-material/Description';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import { blue as Blue, red as Red } from '@mui/material/colors';
 
 /**
  * Doc Link Component

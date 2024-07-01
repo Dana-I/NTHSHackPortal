@@ -12,6 +12,8 @@ import HomeChallenges from '../components/homeComponents/HomeChallenges';
 import HomeTeam from '../components/homeComponents/HomeTeam';
 import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
+import HomeSchedule from '../components/homeComponents/HomeSchedule';
+import HomeFaq from '../components/homeComponents/HomeFaq';
 
 /**
  * The home page.
@@ -25,6 +27,8 @@ export default function Home(props: {
   answeredQuestion: AnsweredQuestion[];
   fetchedMembers: TeamMember[];
   sponsorCard: Sponsor[];
+  scheduleCard: ScheduleEvent[];
+  dateCard: Dates;
 }) {
   const [loading, setLoading] = useState(true);
 
@@ -53,9 +57,11 @@ export default function Home(props: {
       <HomeVideoStats />
       <HackCountdown />
       <HomeAbout />
+      <HomeSchedule scheduleCard={props.scheduleCard} dateCard={props.dateCard} />
       <HomeSpeakers keynoteSpeakers={props.keynoteSpeakers} />
       <HomeChallenges challenges={props.challenges} />
       <HomeTeam members={props.fetchedMembers} />
+      <HomeFaq answeredQuestion={props.answeredQuestion} />
       <HomeSponsors sponsorCard={props.sponsorCard} />
       <HomeFooter />
     </>
@@ -84,6 +90,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `${protocol}://${context.req.headers.host}/api/sponsor`,
     {},
   );
+  const { data: scheduleData } = await RequestHelper.get<ScheduleEvent[]>(
+    `${protocol}://${context.req.headers.host}/api/schedule`,
+    {},
+  );
+  const { data: dateData } = await RequestHelper.get<ScheduleEvent[]>(
+    `${protocol}://${context.req.headers.host}/api/dates`,
+    {},
+  );
   return {
     props: {
       keynoteSpeakers: keynoteData,
@@ -91,6 +105,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       answeredQuestion: answeredQuestion,
       fetchedMembers: memberData,
       sponsorCard: sponsorData,
+      scheduleCard: scheduleData,
+      dateCard: dateData,
     },
   };
 };

@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useLayoutEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Field, ErrorMessage } from 'formik';
+import { MenuItem, TextField } from '@mui/material';
 
 /**
  *Text input question Component
@@ -10,14 +11,24 @@ function Question(props) {
   if (props.type === 'text') {
     return (
       <Fragment>
-        <label htmlFor={props.question.id} className="mt-4">
-          {props.question.required ? '*' : ''}
-          {props.question.question}
-        </label>
-        <Field
+        <TextField
+          required={props.question.required}
+          label={props.question.question}
           id={props.question.id}
           name={props.question.name}
-          className="border border-complementary/20 rounded-md md:p-2 p-1"
+          variant="outlined"
+          type="text"
+          onChange={props.onChange}
+          sx={{
+            fieldset: { borderColor: '#79747E' },
+          }}
+          InputProps={{
+            classes: {
+              notchedOutline: '!border-red',
+              input: 'focus:ring-offset-0 focus:ring-0 focus:ring-shadow-0',
+            },
+          }}
+          className="!mt-4"
         />
         <ErrorMessage
           name={props.question.name}
@@ -28,20 +39,29 @@ function Question(props) {
   } else if (props.type === 'number') {
     return (
       <Fragment key={props.question.id}>
-        <label htmlFor={props.question.id} className="mt-4">
-          {props.question.required ? '*' : ''}
-          {props.question.question}
-        </label>
-        <input
+        <TextField
+          required={props.question.required}
+          label={props.question.question}
           id={props.question.id}
-          className="border border-complementary/20 rounded-md md:p-2 p-1"
           name={props.question.name}
+          variant="outlined"
           type="number"
-          min={props.question.min}
-          max={props.question.max}
-          pattern={props.question.pattern}
+          sx={{
+            fieldset: { borderColor: '#79747E' },
+          }}
           onChange={props.onChange}
-          value={props.value}
+          InputProps={{
+            inputProps: {
+              min: props.question.min,
+              max: props.question.max,
+              pattern: props.question.pattern,
+            },
+            classes: {
+              notchedOutline: '!border-red',
+              input: 'focus:ring-offset-0 focus:ring-0 focus:ring-shadow-0',
+            },
+          }}
+          className="!mt-4"
         />
         <ErrorMessage
           name={props.question.name}
@@ -52,23 +72,21 @@ function Question(props) {
   } else if (props.type === 'dropdown') {
     return (
       <Fragment>
-        <label htmlFor={props.question.id} className="mt-4">
-          {props.question.required ? '*' : ''}
-          {props.question.question}
-        </label>
-        <Field
-          as="select"
-          name={props.question.name}
+        <TextField
+          select
           id={props.question.id}
-          className="border border-complementary/20 rounded-md md:pl-2 md:py-2 pl-1 py-1 w-min text-sm sm:text-base"
+          required={props.question.required}
+          label={props.question.question}
+          name={props.question.name}
+          className="!mt-4"
         >
-          <option value="" disabled selected></option>
+          <MenuItem selected disabled value="" />
           {props.question.options.map((option) => (
-            <option key={option.value} value={option.value}>
+            <MenuItem key={option.value} value={option.value}>
               {option.title}
-            </option>
+            </MenuItem>
           ))}
-        </Field>
+        </TextField>
         <ErrorMessage
           name={props.question.name}
           render={(msg) => <div className="text-red-600">{msg}</div>}

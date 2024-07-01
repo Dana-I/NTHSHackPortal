@@ -2,6 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 @import url('/fonts/stylesheet.css');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300...700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300...700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -196,7 +201,7 @@ a.link {
 
 .swiper-pagination-bullet,
 .swiper-pagination-bullet-tracks {
-  background-color: #4C4950 !important;
+  background-color: #4c4950 !important;
   opacity: 1;
 }
 
