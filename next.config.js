@@ -32,6 +32,13 @@ const withPWA = require('next-pwa')({
       test: /\.md$/,
       use: 'raw-loader',
     });
+
+    // For loading svg as React component
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     return config;
   },
 })),
