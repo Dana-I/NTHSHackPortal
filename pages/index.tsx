@@ -14,6 +14,7 @@ import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
 import HomeSchedule from '../components/homeComponents/HomeSchedule';
 import HomeFaq from '../components/homeComponents/HomeFaq';
+import HomePrizes from '../components/homeComponents/HomePrizes';
 
 /**
  * The home page.
@@ -29,9 +30,9 @@ export default function Home(props: {
   sponsorCard: Sponsor[];
   scheduleCard: ScheduleEvent[];
   dateCard: Dates;
+  prizeData: Array<{ rank: number; prizeName: string }>;
 }) {
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     // Wait for all components to render before showing page
     setLoading(false);
@@ -60,6 +61,7 @@ export default function Home(props: {
       <HomeSchedule scheduleCard={props.scheduleCard} dateCard={props.dateCard} />
       <HomeSpeakers keynoteSpeakers={props.keynoteSpeakers} />
       <HomeChallenges challenges={props.challenges} />
+      <HomePrizes prizes={props.prizeData} />
       <HomeTeam members={props.fetchedMembers} />
       <HomeFaq answeredQuestion={props.answeredQuestion} />
       <HomeSponsors sponsorCard={props.sponsorCard} />
@@ -76,6 +78,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
   const { data: challengeData } = await RequestHelper.get<Challenge[]>(
     `${protocol}://${context.req.headers.host}/api/challenges/`,
+    {},
+  );
+  const { data: prizeData } = await RequestHelper.get<Array<{ rank: number; prizeName: string }>>(
+    `${protocol}://${context.req.headers.host}/api/prizes`,
     {},
   );
   const { data: answeredQuestion } = await RequestHelper.get<AnsweredQuestion[]>(
@@ -107,6 +113,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       sponsorCard: sponsorData,
       scheduleCard: scheduleData,
       dateCard: dateData,
+      prizeData: prizeData,
     },
   };
 };
