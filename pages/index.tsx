@@ -6,12 +6,12 @@ import HomeHero from '../components/homeComponents/HomeHero';
 import HomeNotif from '../components/homeComponents/HomeNotif';
 import HomeVideoStats from '../components/homeComponents/HomeVideoStats';
 import HomeAbout from '../components/homeComponents/HomeAbout';
+import HackCountdown from '../components/homeComponents/HackCountdown';
 import HomeSpeakers from '../components/homeComponents/HomeSpeakers';
 import HomeChallenges from '../components/homeComponents/HomeChallenges';
 import HomeTeam from '../components/homeComponents/HomeTeam';
 import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
-import HackCountdown from '../components/homeComponents/HackCountdown';
 
 /**
  * The home page.
