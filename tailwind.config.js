@@ -14,6 +14,10 @@ module.exports = {
         complementaryLight: '#999999',
       },
       fontFamily: {
+        fredoka: ['Fredoka', 'sans-serif'],
+        dmsans: ['DM Sans', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         sans: ['Fredoka', 'Roboto', 'sans-serif'],
         Fredoka: ['Fredoka', 'sans-serif'],
       },
