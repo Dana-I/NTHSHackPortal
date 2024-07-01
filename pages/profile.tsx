@@ -70,9 +70,6 @@ export default function ProfilePage() {
     return <div></div>;
   }
 
-  console.log(user);
-  console.log(profile);
-
   return (
     <div className="md:px-48 px-8 md:py-16 py-12 text-black">
       <div className="flex flex-col md:flex-row 2xl:gap-x-14 gap-x-12 2xl:justify-center">
