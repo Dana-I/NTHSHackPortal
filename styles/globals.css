@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 @import url('/fonts/stylesheet.css');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300...700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300...700&display=swap');
@@ -19,6 +22,13 @@ body {
   font-family: 'wavehaus';
   src: url('/fonts/Wavehaus-66Book.ttf') format('truetype');
   font-display: auto;
+}
+
+@font-face {
+  font-family: 'DS-Digital';
+  src: url('/fonts/DS-DIGI.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .MuiTypography-root {
@@ -45,6 +55,11 @@ a.link {
 
 .element {
   font-family: 'wavehaus';
+}
+
+/* Fredoka font class for specific elements */
+.fredoka-font {
+  font-family: 'Fredoka', sans-serif;
 }
 
 .profile-view {
@@ -169,7 +184,6 @@ a.link {
 .swiper-button-next {
   color: #000;
 }
-
 .swiper-button-prev:after {
   content: 'Prev';
 }
@@ -177,7 +191,6 @@ a.link {
 .swiper-button-next:after {
   content: 'Next';
 }
-
 .swiper-button-prev:after,
 .swiper-button-next:after {
   display: block;
