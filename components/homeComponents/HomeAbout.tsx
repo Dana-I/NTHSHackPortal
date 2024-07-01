@@ -9,10 +9,10 @@ const HomeAbout = () => {
   const customShapesStyles: CustomShapesStyles = {
     customShapeOne: {
       position: 'absolute',
-      top: '2%',
+      top: '13px',
       left: '27.5%',
       width: '30%',
-      height: '20%',
+      height: '130px',
       background: '#C1C8FF',
       borderRadius: '0px 0px 0px 158px',
       display: 'flex',
@@ -32,10 +32,10 @@ const HomeAbout = () => {
     },
     customShapeTwo: {
       position: 'absolute',
-      top: '23.75%',
+      top: '160px',
       left: '12.5%',
       width: '45%',
-      height: '30%',
+      height: '200px',
       background: '#C1C8FF',
       borderRadius: '0px 158px 0px 158px',
       display: 'flex',
@@ -55,10 +55,10 @@ const HomeAbout = () => {
     },
     customShapeThree: {
       position: 'absolute',
-      top: '2%',
+      top: '13px',
       right: '10%',
       width: '30%',
-      height: '52%',
+      height: '347px',
       background: '#C1C8FF',
       borderRadius: '0 158px 0 0',
       display: 'flex',
@@ -78,10 +78,10 @@ const HomeAbout = () => {
     },
     customShapeFour: {
       position: 'absolute',
-      top: '2%',
+      top: '13px',
       left: '12.5%',
       width: '15%',
-      height: '20%',
+      height: '130px',
       background: '#C1C8FF',
       borderRadius: '0 158px 0 0',
       display: 'flex',
@@ -112,7 +112,7 @@ const HomeAbout = () => {
       fontFamily: 'Arial, sans-serif',
       textAlign: 'center',
       width: '100vw',
-      height: '130vh',
+      height: '120vh',
       overflow: 'hidden',
       paddingTop: '2vh',
     },
@@ -156,7 +156,7 @@ const HomeAbout = () => {
         {`
           @media (max-width: 600px) {
             .container {
-              height: 200vh !important;
+              height: 400vh !important;
             }
             .statsContainer {
               display: flex;
@@ -165,52 +165,66 @@ const HomeAbout = () => {
             }
             .customShapeOne {
               width: 50% !important;
-              height: 15% !important;
+              height: 85px !important;
               left: 45% !important;
             }
             .customShapeTwo {
               width: 90% !important;
-              top: 19% !important;
-              height: 20% !important;
+              top: 110px !important;
+              height: 110px !important;
               left: 5% !important;
             }
             .customShapeThree {
               width: 90% !important;
-              top: 41% !important;
-              height: 25% !important;
+              top: 235px !important;
+              height: 275px !important;
               left: 5% !important;
             }
             .customShapeFour {
               width: 40% !important;
-              height: 15% !important;
+              height: 85px !important;
               left: 5% !important;
             }
           }
         `}
       </style>
-      <h1 className="header" style={styles.header}>About HackPortal</h1>
+      <h1 className="header" style={styles.header}>
+        About HackPortal
+      </h1>
       <p className="description" style={styles.description}>
         Hackathons are 24-hour gatherings where students collaborate <br /> to create innovative
         projects, forge new connections, and compete for prizes.
       </p>
       <div className="statsContainer" style={styles.statsContainer}>
         <div className="statsItem">
-          <div className="customShape customShapeFour" style={{ ...customShapesStyles.customShapeFour }}></div>
+          <div
+            className="customShape customShapeFour"
+            style={{ ...customShapesStyles.customShapeFour }}
+          ></div>
         </div>
         <div className="statsItem">
-          <div className="customShape customShapeOne" style={{ ...customShapesStyles.customShapeOne }}>
+          <div
+            className="customShape customShapeOne"
+            style={{ ...customShapesStyles.customShapeOne }}
+          >
             <div style={customShapesStyles.labelBoxOne}>Incredible</div>
             <div style={customShapesStyles.statisticText}>Statistic 1</div>
           </div>
         </div>
         <div className="statsItem">
-          <div className="customShape customShapeTwo" style={{ ...customShapesStyles.customShapeTwo }}>
+          <div
+            className="customShape customShapeTwo"
+            style={{ ...customShapesStyles.customShapeTwo }}
+          >
             <div style={customShapesStyles.labelBoxTwo}>Shocking</div>
             <div style={customShapesStyles.statisticText}>Statistic 2</div>
           </div>
         </div>
         <div className="statsItem">
-          <div className="customShape customShapeThree" style={{ ...customShapesStyles.customShapeThree }}>
+          <div
+            className="customShape customShapeThree"
+            style={{ ...customShapesStyles.customShapeThree }}
+          >
             <div style={customShapesStyles.labelBoxThree}>Big</div>
             <div style={customShapesStyles.statisticText}>Statistic 3</div>
           </div>

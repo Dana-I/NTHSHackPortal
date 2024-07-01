@@ -56,6 +56,7 @@
     "react-dnd": "^15.1.2",
     "react-dnd-html5-backend": "^15.1.2",
     "react-dom": "17.0.2",
+    "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.3",
     "react-material-ui-carousel": "^2.3.5",
     "react-notion-x": "^6.12.10",
