@@ -367,7 +367,6 @@ export default function UserPage() {
                 ),
               );
             }}
-            userStatus={users.find((user) => user.id === currentUser).status}
           />
         )}
       </div>

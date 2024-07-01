@@ -14,7 +14,7 @@ import LanguageIcon from '@mui/icons-material/Language';
  *
  * Route: /profile
  */
-export default function ProfilePage({ userStatus }) {
+export default function ProfilePage() {
   const router = useRouter();
   const { isSignedIn, hasProfile, user, profile } = useAuthContext();
   const [uploading, setUploading] = useState<boolean>(false);
@@ -70,6 +70,9 @@ export default function ProfilePage({ userStatus }) {
     return <div></div>;
   }
 
+  console.log(user);
+  console.log(profile);
+
   return (
     <div className="md:px-48 px-8 md:py-16 py-12 text-black">
       <div className="flex flex-col md:flex-row 2xl:gap-x-14 gap-x-12 2xl:justify-center">
@@ -85,10 +88,23 @@ export default function ProfilePage({ userStatus }) {
               darkColor="#05149C"
               lightColor="#0000"
             />
+            <div className="text-center text-[#170F49] text-md font-semibold">
+              {profile.user.group ? profile.user.group : 'Group TBD'}
+            </div>
           </div>
           <div className="border-y-[1.2px] border-primaryDark/20 py-4 md:my-8 my-6">
             <div className="font-Fredoka font-semibold text-lg">Application Status</div>
-            <h1 className="font-Fredoka text-xl">{userStatus ? userStatus : 'Pending'}</h1>
+            <h1
+              className={`font-Fredoka text-xl font-semibold ${
+                profile.user.status === 'Accepted'
+                  ? 'text-[#5DC55B]'
+                  : profile.user.status === 'Rejected'
+                  ? 'text-[#DE3163]'
+                  : 'text-[#5C67C9]'
+              }`}
+            >
+              {profile.user.status ? profile.user.status : 'Pending'}
+            </h1>
           </div>
 
           <div className="flex gap-x-4">

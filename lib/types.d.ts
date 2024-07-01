@@ -86,6 +86,8 @@ type Registration = {
      * The email used to contact the user.
      */
     preferredEmail: string;
+    group: string;
+    status: string;
   };
   // TODO: Allow for qualifiers like "how old will you be at the day of the event?"
   // TODO: Allow this to be dynamically defined by the organizers
