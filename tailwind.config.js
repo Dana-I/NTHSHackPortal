@@ -20,6 +20,7 @@ module.exports = {
         inter: ['Inter', 'sans-serif'],
         sans: ['Fredoka', 'Roboto', 'sans-serif'],
         Fredoka: ['Fredoka', 'sans-serif'],
+        nunito: ['Nunito', 'sans-serif'],
       },
       width: {
         '1/8': '12.5%',
