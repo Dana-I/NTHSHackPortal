@@ -86,6 +86,8 @@ type Registration = {
      * The email used to contact the user.
      */
     preferredEmail: string;
+    group: string;
+    status: string;
   };
   // TODO: Allow for qualifiers like "how old will you be at the day of the event?"
   // TODO: Allow this to be dynamically defined by the organizers
@@ -170,6 +172,9 @@ type KeynoteSpeaker = {
   subtitle: string;
   description: string;
   fileName: string;
+  githubLink: string;
+  linkedinLink: string;
+  websiteLink: string;
 };
 
 /**
@@ -212,7 +217,7 @@ type Announcement = {
  * Represent an event
  * @param title title of event
  * @param speakers speakers of event
- * @param type type of event (Tech talk, workshop, social, etc.)
+ * @param type type of event (sponsor, food, workshop, social, etc.)
  * @param tracks what track the event is on (super-admin defined) ex: "General Event", "Technical Event", "Skills Event"
  * @param startDate start date of event
  * @param startTimestamp start timestamp of event
@@ -238,6 +243,16 @@ type ScheduleEvent = {
   location: string;
   page: string;
   description: string;
+};
+
+type Dates = {
+  endTime: number;
+  startTime: number;
+  year: number;
+  day1: number;
+  day2: number;
+  day1Month: number;
+  day2Month: number;
 };
 
 type Sponsor = {

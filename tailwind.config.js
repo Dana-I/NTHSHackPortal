@@ -15,8 +15,11 @@ module.exports = {
       },
       fontFamily: {
         dmSans: ['DM Sans', 'sans-serif'],
+        fredoka: ['Fredoka', 'sans-serif'],
         fredokaOne: ['Fredoka One', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         sans: ['Fredoka', 'Roboto', 'sans-serif'],
       },
       width: {

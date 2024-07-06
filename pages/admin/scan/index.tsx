@@ -7,7 +7,7 @@ import LoadIcon from '../../../components/LoadIcon';
 import { useAuthContext } from '../../../lib/user/AuthContext';
 import { isAuthorized } from '..';
 import { RequestHelper } from '../../../lib/request-helper';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Dialog } from '@headlessui/react';
 
 const successStrings = {

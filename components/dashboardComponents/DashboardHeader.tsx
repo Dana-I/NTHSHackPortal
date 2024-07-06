@@ -56,12 +56,12 @@ export default function DashboardHeader() {
         <div className="panel w-full bg-secondaryDark text-primaryDark text-sm">
           <ul className="">
             <li className="p-2 hover:bg-secondary cursor-pointer">
-              <Link href="/dashboard" passHref>
+              <Link href="/dashboard" passHref legacyBehavior>
                 <div>HackCenter</div>
               </Link>
             </li>
             <li className="p-2 hover:bg-secondary cursor-pointer">
-              <Link href="/dashboard/questions" passHref>
+              <Link href="/dashboard/questions" passHref legacyBehavior>
                 <div>Ask a Question</div>
               </Link>
             </li>

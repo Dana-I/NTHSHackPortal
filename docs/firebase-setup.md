@@ -44,6 +44,24 @@ Team Members
         - fileName [string]
         - rank [number]
 
+Dates
+- dates
+    - [document]
+        - endTime [number] 
+            // *time the hackathon offically ends*
+        - startTime [number]
+            // *time the hackathon officially begins*
+        - year [number]
+            // *year hackathon is occuring in*
+        - day1 [number]
+            // *first day of the hackathon*
+        - day2 [number]
+            // *second day of the hackathon*
+        - day1Month [number]
+            // *month the first day of the hackathon is occuring in*
+        - day2Month [number]
+            // *month the second day of the hackathon is occuring in*
+
 Event Schedule
 - schedule-events
     - [document]

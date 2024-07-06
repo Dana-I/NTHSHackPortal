@@ -5,14 +5,14 @@ import LoadIcon from '../components/LoadIcon';
 import { useUser } from '../lib/profile/user-data';
 import { RequestHelper } from '../lib/request-helper';
 import { useAuthContext } from '../lib/user/AuthContext';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { hackPortalConfig, formInitialValues } from '../hackportal.config';
 import DisplayQuestion from '../components/registerComponents/DisplayQuestion';
 import { getFileExtension } from '../lib/util';
 import Link from 'next/link';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { GetServerSideProps } from 'next';
 import { grid } from '@mui/system';
 

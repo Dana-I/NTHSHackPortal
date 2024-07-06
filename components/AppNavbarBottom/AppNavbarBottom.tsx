@@ -4,6 +4,7 @@ import TrophyIcon from '@/public/icons/trophy.svg';
 import QuestionIcon from '@/public/icons/question.svg';
 import AdminIcon from '@/public/icons/admin.svg';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 export default function AppNavbarBottom() {
   return (
@@ -15,9 +16,13 @@ export default function AppNavbarBottom() {
       )}
     >
       <FilePlusIcon />
-      <CalendarIcon />
+      <Link href="/#schedule-section">
+        <CalendarIcon />
+      </Link>
       <TrophyIcon />
-      <QuestionIcon />
+      <Link href="#faq-section">
+        <QuestionIcon />
+      </Link>
       <AdminIcon />
     </div>
   );

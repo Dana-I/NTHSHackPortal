@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useLayoutEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Field, ErrorMessage } from 'formik';
-import { InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import { FormControl } from '@material-ui/core';
+import { MenuItem, TextField } from '@mui/material';
 
 /**
  *Text input question Component

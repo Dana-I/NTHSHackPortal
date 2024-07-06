@@ -1,38 +1,9 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 /* Calendar */
-export default function Calendar() {
-  const [dateCard, setDateCard] = useState([]);
-  const [scheduleCard, setScheduleCard] = useState([]);
-  const [filter, setFilter] = useState('All');
-
-  /* Fetch Data */
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const scheduleData = await fetch(
-          `${window.location.protocol}//${window.location.host}/api/schedule`,
-        ).then((res) => res.json());
-        setScheduleCard(scheduleData);
-
-        const dateData = await fetch(
-          `${window.location.protocol}//${window.location.host}/api/dates`,
-        ).then((res) => res.json());
-        setDateCard(dateData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (dateCard.length === 0 || scheduleCard.length === 0) {
-    return <div>Fetching Data</div>;
-  }
-
+export default function HomeSchedule(props: { scheduleCard: ScheduleEvent[]; dateCard: Dates }) {
   /* Event Colors */
   const eventColors = {
     All: 'border-gray-500 text-gray-500',
@@ -51,13 +22,13 @@ export default function Calendar() {
 
   /* Dates Values */
   const dateValues = {
-    year: dateCard[0].year,
-    day1: dateCard[0].day1,
-    day1Month: dateCard[0].day1Month,
-    day2: dateCard[0].day2,
-    day2Month: dateCard[0].day2Month,
-    endTime: dateCard[0].endTime,
-    startTime: dateCard[0].startTime,
+    year: props.dateCard[0].year,
+    day1: props.dateCard[0].day1,
+    day1Month: props.dateCard[0].day1Month,
+    day2: props.dateCard[0].day2,
+    day2Month: props.dateCard[0].day2Month,
+    endTime: props.dateCard[0].endTime,
+    startTime: props.dateCard[0].startTime,
   };
 
   /* Set event dates and times */
@@ -84,6 +55,7 @@ export default function Calendar() {
   );
 
   /* Filter Functionality */
+  const [filter, setFilter] = useState('All');
 
   const changeFilter = (newFilter: string) => {
     if (newFilter === filter) {
@@ -149,7 +121,7 @@ export default function Calendar() {
 
   /* Filter Daily Events */
   const getDailyEvents = (startTime, endTime) => {
-    return scheduleCard
+    return props.scheduleCard
       .sort((a, b) => {
         return +new Date(a.startDate) - +new Date(b.startDate);
       })
@@ -166,7 +138,7 @@ export default function Calendar() {
   const day2Events = getDailyEvents(day2StartDateAndTime, eventEndDateAndTime);
 
   return (
-    <div className="bg-[#F2F3FF]">
+    <div id="schedule-section" className="bg-[#F2F3FF]">
       <div className="text-center text-5xl font-bold text-[#05149C] p-4 font-fredoka">
         What to Expect?
       </div>
