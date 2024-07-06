@@ -1,6 +1,9 @@
+import { useAuthContext } from '@/lib/user/AuthContext';
 import Link from 'next/link';
 
 export default function AppHeader2_Core() {
+  const { hasProfile } = useAuthContext();
+
   return (
     <div className="flex justify-center py-2 w-full">
       {/* Real navbar */}
@@ -19,7 +22,16 @@ export default function AppHeader2_Core() {
         </Link>
 
         <div className="p-2 text-white cursor-pointer">
-          <div className="py-3 px-5 rounded-[30px] bg-[#5D5A88] font-bold">Apply</div>
+          {!hasProfile && (
+            <Link href="/register">
+              <div className="py-3 px-5 rounded-[30px] bg-[#5D5A88] font-bold">Apply</div>
+            </Link>
+          )}
+          {hasProfile && (
+            <Link href="/profile">
+              <div className="py-3 px-5 rounded-[30px] bg-[#5D5A88] font-bold">Profile</div>
+            </Link>
+          )}
         </div>
       </div>
     </div>
