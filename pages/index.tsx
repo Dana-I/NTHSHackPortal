@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { useEffect, useState } from 'react';
 import { RequestHelper } from '../lib/request-helper';
-import HomeHero from '../components/homeComponents/HomeHero';
 import HomeNotif from '../components/homeComponents/HomeNotif';
 import HomeVideoStats from '../components/homeComponents/HomeVideoStats';
 import HomeAbout from '../components/homeComponents/HomeAbout';
@@ -12,6 +11,7 @@ import HomeChallenges from '../components/homeComponents/HomeChallenges';
 import HomeTeam from '../components/homeComponents/HomeTeam';
 import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
+import HomeHero2 from '../components/homeComponents/HomeHero2';
 import HomeSchedule from '../components/homeComponents/HomeSchedule';
 import HomeFaq from '../components/homeComponents/HomeFaq';
 import HomePrizes from '../components/homeComponents/HomePrizes';
@@ -54,7 +54,7 @@ export default function Home(props: {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeNotif />
-      <HomeHero />
+      <HomeHero2 />
       <HomeVideoStats />
       <HackCountdown />
       <HomeAbout />
