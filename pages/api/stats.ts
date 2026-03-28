@@ -51,11 +51,12 @@ async function getStatsData() {
 
     for (let arrayField of arrayFields) {
       if (!userData[arrayField]) continue;
-      userData[arrayField].forEach((data: string) => {
-        if (arrayField === 'scans' && data === checkInEventName) generalStats.checkedInCount++;
+      userData[arrayField].forEach((data: string | { name: string; timestamp: string }) => {
+        const value = typeof data === 'string' ? data : data.name;
+        if (arrayField === 'scans' && value === checkInEventName) generalStats.checkedInCount++;
         else {
-          if (!generalStats[arrayField].hasOwnProperty(data)) generalStats[arrayField][data] = 0;
-          generalStats[arrayField][data]++;
+          if (!generalStats[arrayField].hasOwnProperty(value)) generalStats[arrayField][value] = 0;
+          generalStats[arrayField][value]++;
         }
       });
     }
